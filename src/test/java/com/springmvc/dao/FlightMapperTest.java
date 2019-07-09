@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class FlightMapperTest {
 
@@ -37,10 +38,21 @@ public class FlightMapperTest {
         flight.setArrivalAirport("e");
         flight.setSeatNumber(50);
         flight.setSeatFree(20);
-        flight.setPrice(BigDecimal.valueOf(10.00));
+        flight.setPrice(10);
         int result = mapper.insert(flight);
         System.out.println(result);
         assert (result == 1);
 
+    }
+
+    @Test
+    public void selectByFlightNumber() {
+        Flight flight = new Flight();
+        flight.setFlightNumber("b");
+        ArrayList<Flight> list = mapper.selectByFlightNumber(flight);
+        System.out.println(list.size());
+        for (Flight f : list){
+            System.out.println(f.getFlightNumber());
+        }
     }
 }

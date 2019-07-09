@@ -14,7 +14,7 @@
 <body>
 <h2>Flights Generators</h2>
 <form id="flightInput" action="/input/flight" method="post">
-    Flight number <br><input type="text" required id="flightnumber" name="flight_number"><br>
+    Flight number <br><input type="text" required id="flight_number" name="flight_number"><br>
     Departure time <br><input type="datetime-local" required id="departure_time" name="departure_time"><br>
     Arrival time <br><input type="datetime-local" required id="arrival_time" name="arrival_time"><br>
     Departure airport <br><select required id="departure_airport" name="departure_airport">
@@ -24,7 +24,7 @@
         <option value="Amsterdam">Amsterdam</option>
         <option value="Helsinki">Helsinki</option>
     </select><br>
-    Departure airport <br><select required id="arrival_airport" name="arrival_airport">
+    Arrival airport <br><select required id="arrival_airport" name="arrival_airport">
         <option value="London">London</option>
         <option value="Paris">Paris</option>
         <option value="Berlin">Berlin</option>
@@ -38,4 +38,17 @@
     <input type="button" value="log out" onclick="location.href='/admin/logout'">
 </form>
 </body>
+<script>
+    if ('${status}' != ''){
+        if ('${status}' == 1){
+            alert("Flight already exists");
+        }
+        else if ('${status}' == 0){
+            alert("Flight input successfully");
+        }
+        else if ('${status}' == 2){
+            alert("Flight input failed");
+        }
+    }
+</script>
 </html>

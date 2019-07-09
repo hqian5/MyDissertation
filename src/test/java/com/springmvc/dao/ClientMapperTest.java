@@ -32,6 +32,7 @@ public class ClientMapperTest {
     @Test
     public void insert() {
         Client client = new Client();
+        client.setUserid(1);
         client.setUsername("tom");
         client.setPassword("abc");
         client.setRealname("c");
