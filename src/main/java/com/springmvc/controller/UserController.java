@@ -163,7 +163,4 @@ public class UserController {
         }
         return "userhome";
     }
-
-
-
 }
