@@ -1,7 +1,9 @@
 package com.springmvc.controller;
 
 import com.springmvc.entity.Client;
+import com.springmvc.entity.Flight;
 import com.springmvc.service.inter.ClientService;
+import com.springmvc.service.inter.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private FlightService flightService;
 
     @RequestMapping(value = "/index/admin", method = RequestMethod.GET)
     public String goAdmin() {
@@ -138,5 +143,27 @@ public class UserController {
         session.invalidate();
         return "login";
     }
+
+    @RequestMapping(value = "/search/flight", method = RequestMethod.GET)
+    public String searchFlight(){
+        return "userhome";
+    }
+
+    @RequestMapping(value = "/search/flight", method = RequestMethod.POST)
+    public String getFlight(@RequestParam("flight_no") String flight_no, Model model, HttpSession session) {
+        ArrayList<Flight> flight;
+        flight = flightService.selectFlight(flight_no);
+        if (flight.size() == 0){
+            model.addAttribute("status", 1);
+        }
+        else {
+            session.setAttribute("flight", flight.get(0));
+            model.addAttribute("status", 0);
+            model.addAttribute("searchResult", flight.get(0));
+        }
+        return "userhome";
+    }
+
+
 
 }

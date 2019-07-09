@@ -8,4 +8,6 @@ public interface FlightService {
     int insert(Flight record);
 
     ArrayList<Flight> selectByFlightNumber(Flight record);
+
+    ArrayList<Flight> selectFlight(String record);
 }

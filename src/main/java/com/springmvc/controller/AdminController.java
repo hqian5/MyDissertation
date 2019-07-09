@@ -93,7 +93,6 @@ public class AdminController {
         flight.setSeatNumber(seatNo);
         flight.setSeatFree(seatFree);
         flight.setPrice(price);
-        System.out.println("flight: " + flight.getFlightNumber());
         record.setFlightNumber(flight.getFlightNumber());
         record.setDepartureTime(flight.getDepartureTime());
         record.setArrivalTime(flight.getArrivalTime());
@@ -102,7 +101,6 @@ public class AdminController {
         record.setSeatNumber(flight.getSeatNumber());
         record.setSeatFree(flight.getSeatFree());
         record.setPrice(flight.getPrice());
-        System.out.println("record:" + record.getFlightNumber());
         list = flightService.selectByFlightNumber(record);
         if (list.size() != 0){
             model.addAttribute("status", 1);
