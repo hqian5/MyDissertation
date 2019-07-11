@@ -55,4 +55,12 @@ public class FlightMapperTest {
             System.out.println(f.getFlightNumber());
         }
     }
+
+    @Test
+    public void selectAllFlights() {
+        ArrayList<Flight> list = mapper.selectAllFlights();
+        for (Flight f : list){
+            System.out.println(f.getFlightNumber());
+        }
+    }
 }

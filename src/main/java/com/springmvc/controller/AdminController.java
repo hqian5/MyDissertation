@@ -7,13 +7,20 @@ import com.springmvc.service.inter.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -82,7 +89,7 @@ public class AdminController {
                                  @RequestParam("arrival_time") String aTime, @RequestParam("departure_airport") String dAirport,
                                  @RequestParam("arrival_airport") String aAirport, @RequestParam("seat_number") int seatNo,
                                  @RequestParam("seat_free") int seatFree, @RequestParam("price") int price,
-                                 Model model, HttpSession session, Flight flight){
+                                 Model model, HttpSession session, @ModelAttribute Flight flight) throws ParseException {
         ArrayList<Flight> list;
         Flight record = new Flight();
         flight.setFlightNumber(flightNo);
@@ -102,7 +109,32 @@ public class AdminController {
         record.setSeatFree(flight.getSeatFree());
         record.setPrice(flight.getPrice());
         list = flightService.selectByFlightNumber(record);
-        if (list.size() != 0){
+
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date dForm = format.parse(dTime);
+        Date aForm = format.parse(aTime);
+        Date date = new Date();
+        if ((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0){
+            model.addAttribute("status",3);
+            model.addAttribute("time1", 3);
+        }
+        if((aForm.getTime() - dForm.getTime()) <= 0){
+            model.addAttribute("status", 3);
+            model.addAttribute("time2", 4);
+        }
+        if (dAirport.equals(aAirport)){
+            model.addAttribute("status", 3);
+            model.addAttribute("airport", 5);
+        }
+        if (seatFree - seatNo > 0){
+            model.addAttribute("status", 3);
+            model.addAttribute("seat", 6);
+        }
+        if (seatNo <= 0 || seatFree < 0 || price <= 0){
+            model.addAttribute("status", 3);
+            model.addAttribute("price", 7);
+        }
+        else if (list.size() != 0){
             model.addAttribute("status", 1);
         }
         else {
@@ -116,4 +148,19 @@ public class AdminController {
         }
         return "adminhome";
     }
+
+    @RequestMapping(value = "/manage/flights", method = RequestMethod.GET)
+    public String manageFlight(Model model, HttpSession session){
+        ArrayList<Flight> list;
+        Map<String, Object> map = new HashMap<String, Object>();
+        list = flightService.selectAllFlights();
+        session.setAttribute("manageOK", list);
+        model.addAttribute("manage", 0);
+        map.put("flights", list);
+        for (Flight f : list){
+            System.out.println(f.getFlightNumber());
+        }
+        return "adminhome";
+    }
+
 }

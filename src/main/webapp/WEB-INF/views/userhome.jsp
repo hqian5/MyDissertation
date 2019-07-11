@@ -10,26 +10,56 @@
 <html>
 <head>
     <title>User homepage</title>
+    <link rel='stylesheet' href='../../css/login.css' />
+    <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <script src="../../bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
+<style>
+    body{
+        background-image: url("../../images/background6.jpg");
+        background-size: 100%;
+        background-repeat: repeat;
+        font-family: Verdana, Genevs, Arial, sans-serif;
+        text-align: center;
+    }
+</style>
 <body>
-<form id="flightSearch" action="/search/flight" method="post">
-    <c:if test="${not empty user}">
-        <h2>${user.username}, welcome to Birds Tracker<br></h2>
-    </c:if>
-    Please track your flight by typing the flight number
-    <br><input type="text" required id="flight_no" name="flight_no"><br>
-    <input type="submit" id="search">
-    <input type="button" value="log out" onclick="location.href='/user/logout'">
-    <br><br>
-    <div id="result" style="display: none">
-        <label id="flightNumber"></label><br>
-        <label id="departureTime"></label><br>
-        <label id="arrivalTime"></label><br>
-        <label id="departureAirport"></label><br>
-        <label id="arrivalAirport"></label><br>
+<div id="tracker" class="container">
+    <div id="login_frame">
+        <c:if test="${not empty user}">
+            <h2>${user.username}, welcome to Birds Tracker<br></h2>
+        </c:if>
+        <div class="row">
+            <div class="col-md">
+                <form id="flightSearch" action="/search/flight" method="post">
+                    Please track your flight by typing the flight number
+                    <br><input type="text" required id="flight_no" name="flight_no" class="text_field"><br>
+                    <input type="submit" id="search" class="btn-blue">
+                    <input type="button" value="log out" onclick="location.href='/user/logout'" class="btn-blue">
+                    <br><br>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-</form>
+<div id="result" class="container" style="display: none">
+    <h2>Please check the flight information</h2>
+    <div class="row">
+        <div class="col-md">
+            <label id="flightNumber" class="label_input"></label><br>
+            <label id="departureTime" class="label_input"></label><br>
+            <label id="arrivalTime" class="label_input"></label><br>
+            <label id="departureAirport" class="label_input"></label><br>
+            <label id="arrivalAirport" class="label_input"></label><br>
+            <br><input type="button" value="Back" class="btn-blue" onclick="location.href='/back/userhome'">
+        </div>
+    </div>
+</div>
 </body>
 <script>
     if ('${status}' != ''){
@@ -39,7 +69,9 @@
         else if ('${status}' == 0){
             alert("Click 'OK' to track your flight");
             var result = document.getElementById("result");
+            var tracker = document.getElementById("tracker");
             result.style.display = "";
+            tracker.style.display = "none";
             document.getElementById("flightNumber").innerText = 'Flight number: ${searchResult.flightNumber}';
             document.getElementById("departureTime").innerText = 'Departure at ${searchResult.departureTime}';
             document.getElementById("arrivalTime").innerText = 'Arrival at ${searchResult.arrivalTime}'

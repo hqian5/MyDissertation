@@ -91,7 +91,7 @@ public class UserController {
                                    @RequestParam("realname") String realname, @RequestParam("passport") String passport,
                                    @RequestParam("email") String email, @RequestParam("phone") String phone,
                                    @RequestParam("preference") String preference, Model model,
-                                   HttpSession session, Client client){
+                                   HttpSession session, @ModelAttribute Client client){
         ArrayList<Client> list;
         Client record = new Client();
         client.setUsername(uname);
@@ -161,6 +161,11 @@ public class UserController {
             model.addAttribute("status", 0);
             model.addAttribute("searchResult", flight.get(0));
         }
+        return "userhome";
+    }
+
+    @RequestMapping(value = "/back/userhome", method = RequestMethod.GET)
+    public String backUser(){
         return "userhome";
     }
 }

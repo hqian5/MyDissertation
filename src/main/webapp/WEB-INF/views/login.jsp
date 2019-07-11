@@ -9,16 +9,42 @@
 <html>
 <head>
     <title>Log in</title>
+    <link rel='stylesheet' href='../../css/login.css' />
+    <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <script src="../../bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
+<style>
+    body{
+        background-image: url("../../images/background1.jpg");
+        background-size: 100%;
+        background-repeat: repeat;
+        font-family: Verdana, Genevs, Arial, sans-serif;
+        text-align: center;
+    }
+</style>
 <body>
-<h2>User Login</h2>
-<form id="userLogin" action="/user/login" method="post">
-    Username <br><input type="text" required id="username" name="username"><br>
-    Password <br><input type="password" required id="userpassword" name="userpassword"><br><br>
-    <input type="submit" value="Log in">
-    <input type="button" value="Register" onclick="location.href='/login/register'"><br><br>
-    <input type="button" value="Back" onclick="location.href='/back/index'">
-</form>
+<div class="container">
+    <div id="login_frame">
+        <h2>User Login</h2>
+        <div class="row">
+            <div class="col-md">
+                <form id="userLogin" action="/user/login" method="post">
+                    <label class="label_input">Username</label>
+                    <br><input type="text" required id="username" name="username" class="text_field"><br>
+                    <label class="label_input">Password</label>
+                    <br><input type="password" required id="userpassword" name="userpassword" class="text_field"><br><br>
+                    <input type="submit" value="Log in" class="btn-blue">
+                    <input type="button" value="Register" onclick="location.href='/login/register'" class="btn-blue"><br><br>
+                    <input type="button" value="Back" onclick="location.href='/back/index'" class="btn-blue">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 <script>

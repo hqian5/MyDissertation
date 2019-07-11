@@ -22,4 +22,6 @@ public interface FlightMapper {
     int updateByPrimaryKey(Flight record);
 
     ArrayList<Flight> selectByFlightNumber(Flight record);
+
+    ArrayList<Flight> selectAllFlights();
 }

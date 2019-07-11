@@ -10,4 +10,6 @@ public interface FlightService {
     ArrayList<Flight> selectByFlightNumber(Flight record);
 
     ArrayList<Flight> selectFlight(String record);
+
+    ArrayList<Flight> selectAllFlights();
 }

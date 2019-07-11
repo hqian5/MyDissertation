@@ -25,4 +25,8 @@ public class FlightServiceImpl implements FlightService {
     public ArrayList<Flight> selectFlight(String record) {
         return mapper.selectFlight(record);
     }
+
+    public ArrayList<Flight> selectAllFlights() {
+        return mapper.selectAllFlights();
+    }
 }
