@@ -19,6 +19,8 @@ public class Flight {
 
     private Integer price;
 
+    private String flightStatus;
+
     public Integer getFlightid() {
         return flightid;
     }
@@ -89,5 +91,13 @@ public class Flight {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public String getFlightStatus() {
+        return flightStatus;
+    }
+
+    public void setFlightStatus(String flightStatus) {
+        this.flightStatus = flightStatus;
     }
 }

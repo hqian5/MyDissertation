@@ -1,0 +1,1474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="project:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d2c58e9f-63b8-4643-80d2-88e4e4a72a7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/547a4e1f-e700-43a8-a260-e60fc0875d94.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/project.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/controller/AdminController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/AdminMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/ClientMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/FlightMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/MessageMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/TicketMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/dao/TransactionMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Client.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Flight.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Message.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Ticket.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/entity/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/impl/AdminServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/impl/ClientServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/impl/FlightServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/inter/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/inter/ClientService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/springmvc/service/inter/FlightService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/generator.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/spring/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/AdminMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/ClientMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/FlightMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/MessageMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/TicketMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/sqlmap/TransactionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/META-INF/project.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/controller/AdminController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/controller/UserController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/AdminMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/ClientMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/FlightMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/MessageMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/TicketMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/dao/TransactionMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Admin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Client.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Flight.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Message.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Ticket.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/entity/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/impl/AdminServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/impl/ClientServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/impl/FlightServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/inter/AdminService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/inter/ClientService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/service/inter/FlightService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/generator.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/spring/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/AdminMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/ClientMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/FlightMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/MessageMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/TicketMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/sqlmap/TransactionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/activation-1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/aopalliance-1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/avalon-framework-4.1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-beanutils-1.8.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-codec-1.9.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-collections-3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-dbcp-1.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-fileupload-1.3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-httpclient-3.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-io-2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-lang-2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-logging-1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/commons-pool-1.5.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/ezmorph-1.0.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/jackson-annotations-2.7.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/jackson-core-2.7.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/jackson-databind-2.7.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/jsr250-api-1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/log4j-1.2.12.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/logkit-1.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/mybatis-3.2.4.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/mybatis-spring-1.2.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/mysql-connector-java-8.0.15.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/protobuf-java-3.6.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/slf4j-api-1.6.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/slf4j-log4j12-1.6.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-aop-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-context-support-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-expression-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-jdbc-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-oxm-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-test-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-tx-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/spring-webmvc-4.2.5.RELEASE.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/lib/standard-1.1.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/admin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/adminhome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/manage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/register.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/userhome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/bootstrap-4.3.1-dist/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/images/background6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/helloworld/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/project/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/META-INF/project.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/AdminMapperTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/ClientMapperTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/FlightMapperTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/MessageMapperTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/TicketMapperTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/springmvc/dao/TransactionMapperTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springmvc/entity/Flight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springmvc/entity/Flight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/FlightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/FlightService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlmap/FlightMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/FlightMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="project" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="82" column="114" selection-start-line="82" selection-start-column="114" selection-end-line="82" selection-end-column="114" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-163">
+              <caret line="234" column="37" selection-start-line="234" selection-start-column="37" selection-end-line="234" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1360">
+              <caret line="74" column="55" lean-forward="true" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1343">
+              <caret line="79" column="116" selection-start-line="79" selection-start-column="116" selection-end-line="79" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="53" column="73" selection-start-line="53" selection-start-column="73" selection-end-line="53" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="jsf" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>driverClass</find>
+      <find>myba</find>
+      <find>mysql</find>
+      <find>mybat</find>
+      <find>jdbcConnection</find>
+      <find>localhost:3306</find>
+      <find>localhost</find>
+      <find>mapper</find>
+      <find>sql</find>
+      <find>mybatis</find>
+      <find>1.3.7</find>
+      <find>url-</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/MessageMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/MessageMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/reach.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/TicketMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/TransactionMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/TicketMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/UserMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/messageController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/report.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/TransactionMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/AdminService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/adminController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/AdminMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/ClientMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/sqlmap/ClientMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/ClientService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/ClientServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/AdminMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/sqlmap/AdminMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/AdminService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/ClientMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/generator.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/admin.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jjj.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/login.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/update.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/sqlmap/FlightMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/FlightServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/FlightService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="project Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="project Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="project Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1300" />
+    <option name="height" value="740" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="inter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="sqlmap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap-4.3.1-dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap-4.3.1-dist" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap-4.3.1-dist" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="spring" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.springmvc.dao" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\WEB-INF\views" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\css" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\resources\spring" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.16">
+    <configuration name="FlightMapperTest.deleteByPrimaryKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springmvc.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springmvc.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
+      <option name="METHOD_NAME" value="deleteByPrimaryKey" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightMapperTest.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springmvc.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springmvc.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
+      <option name="METHOD_NAME" value="insert" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightMapperTest.selectAllFlights" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springmvc.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springmvc.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
+      <option name="METHOD_NAME" value="selectAllFlights" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightMapperTest.selectByFlightNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springmvc.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springmvc.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
+      <option name="METHOD_NAME" value="selectByFlightNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FlightMapperTest.updateByPrimaryKeySelective" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.springmvc.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.springmvc.dao" />
+      <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
+      <option name="METHOD_NAME" value="updateByPrimaryKeySelective" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.16" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.16" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:80/index.jsp" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="project:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_project" />
+        <option name="HTTP_PORT" value="80" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54949" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="project:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.FlightMapperTest.selectByFlightNumber" />
+      <item itemvalue="JUnit.FlightMapperTest.insert" />
+      <item itemvalue="JUnit.FlightMapperTest.selectAllFlights" />
+      <item itemvalue="JUnit.FlightMapperTest.deleteByPrimaryKey" />
+      <item itemvalue="JUnit.FlightMapperTest.updateByPrimaryKeySelective" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.16" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FlightMapperTest.selectByFlightNumber" />
+        <item itemvalue="JUnit.FlightMapperTest.selectAllFlights" />
+        <item itemvalue="JUnit.FlightMapperTest.deleteByPrimaryKey" />
+        <item itemvalue="JUnit.FlightMapperTest.updateByPrimaryKeySelective" />
+        <item itemvalue="JUnit.FlightMapperTest.insert" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2c58e9f-63b8-4643-80d2-88e4e4a72a7c" name="Default Changelist" comment="" />
+      <created>1561581880556</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561581880556</updated>
+      <workItem from="1561581888188" duration="42441000" />
+      <workItem from="1562259054559" duration="146170000" />
+      <workItem from="1563019643779" duration="5189000" />
+      <workItem from="1563034070422" duration="6527000" />
+    </task>
+    <task id="LOCAL-00001" summary="user&amp;admin login&amp;register">
+      <created>1562603068783</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1562603068783</updated>
+    </task>
+    <task id="LOCAL-00002" summary="user&amp;admin login&amp;register">
+      <created>1562603315839</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1562603315839</updated>
+    </task>
+    <task id="LOCAL-00003" summary="input a single flight">
+      <created>1562691972187</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1562691972188</updated>
+    </task>
+    <task id="LOCAL-00004" summary="user search a flight">
+      <created>1562697518475</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1562697518475</updated>
+    </task>
+    <task id="LOCAL-00005" summary="user search a flight">
+      <created>1562697919242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1562697919242</updated>
+    </task>
+    <task id="LOCAL-00006" summary="appearance of the website">
+      <created>1562805861215</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1562805861215</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update &amp; delete flights">
+      <created>1562977890102</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1562977890102</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update &amp; delete flights bug fixed">
+      <created>1563023742022</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563023742022</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="FlightMapperTest_selectByFlightNumber - 2019.07.09 at 17h 44m 29s.xml">
+      <configuration name="FlightMapperTest.selectByFlightNumber" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_selectAllFlights - 2019.07.10 at 22h 33m 59s.xml">
+      <configuration name="FlightMapperTest.selectAllFlights" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_deleteByPrimaryKey - 2019.07.12 at 15h 12m 06s.xml">
+      <configuration name="FlightMapperTest.deleteByPrimaryKey" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_deleteByPrimaryKey - 2019.07.12 at 15h 12m 51s.xml">
+      <configuration name="FlightMapperTest.deleteByPrimaryKey" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_deleteByPrimaryKey - 2019.07.12 at 15h 13m 50s.xml">
+      <configuration name="FlightMapperTest.deleteByPrimaryKey" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_updateByPrimaryKeySelective - 2019.07.12 at 18h 18m 46s.xml">
+      <configuration name="FlightMapperTest.updateByPrimaryKeySelective" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_deleteByPrimaryKey - 2019.07.13 at 18h 11m 35s.xml">
+      <configuration name="FlightMapperTest.deleteByPrimaryKey" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_selectAllFlights - 2019.07.13 at 18h 17m 47s.xml">
+      <configuration name="FlightMapperTest.selectAllFlights" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_selectByFlightNumber - 2019.07.13 at 18h 18m 55s.xml">
+      <configuration name="FlightMapperTest.selectByFlightNumber" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_selectByFlightNumber - 2019.07.13 at 18h 20m 58s.xml">
+      <configuration name="FlightMapperTest.selectByFlightNumber" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="200327000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.26206434" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Spring" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32894737" />
+      <window_info anchor="bottom" id="Docker" order="2" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.32894737" />
+      <window_info anchor="bottom" id="Java Enterprise" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32846716" />
+      <window_info anchor="bottom" id="Message" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="Application Servers" order="13" weight="0.32894737" />
+      <window_info anchor="bottom" id="Run" order="14" visible="true" weight="0.29532164" />
+      <window_info anchor="bottom" id="TODO" order="15" weight="0.32894737" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Database" order="2" weight="0.16487935" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.24932976" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="user&amp;admin login&amp;register" />
+    <MESSAGE value="input a single flight" />
+    <MESSAGE value="user search a flight" />
+    <MESSAGE value="appearance of the website" />
+    <MESSAGE value="update &amp; delete flights" />
+    <MESSAGE value="update &amp; delete flights bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="update &amp; delete flights bug fixed" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/UserMapperTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/entity/UserWithBLOBs.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/TransactionMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="135" selection-start-line="2" selection-start-column="135" selection-end-line="2" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/TransactionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/TicketMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/entity/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/entity/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/AdminMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/TransactionMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="81" lean-forward="true" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/report.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/AdminMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/AdminServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.5.RELEASE/spring-webmvc-4.2.5.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerMapping.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/ClientMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-231">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/ClientServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/MessageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/ClientMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/AdminMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/ClientMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4216">
+          <caret line="248" column="32" selection-start-line="248" selection-start-column="32" selection-end-line="248" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/images/background1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/admin.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/jjj.xhtml" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/MessageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="66" column="5" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="66" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jrt://C:/Program Files/Java/jdk-10.0.2!/jdk.javadoc/jdk/javadoc/internal/doclets/toolkit/resources/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="106" column="9" selection-start-line="106" selection-start-column="9" selection-end-line="106" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/update.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/TicketMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-860" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-214">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="70" lean-forward="true" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/FlightServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sqlmap/FlightMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="41" column="11" selection-start-line="41" selection-start-column="11" selection-end-line="41" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/entity/Flight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/inter/FlightService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="154" column="31" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="53" column="73" selection-start-line="53" selection-start-column="73" selection-end-line="53" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" column="116" selection-start-line="79" selection-start-column="116" selection-end-line="79" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1360">
+          <caret line="74" column="55" lean-forward="true" selection-start-line="74" selection-start-column="55" selection-end-line="74" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-163">
+          <caret line="234" column="37" selection-start-line="234" selection-start-column="37" selection-end-line="234" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="82" column="114" selection-start-line="82" selection-start-column="114" selection-end-line="82" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>project</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

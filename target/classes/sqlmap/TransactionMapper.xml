@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.TransactionMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.entity.Transaction">
+    <id column="transactionid" jdbcType="INTEGER" property="transactionid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="flightid" jdbcType="INTEGER" property="flightid" />
+    <result column="ticketid" jdbcType="INTEGER" property="ticketid" />
+    <result column="trans_condition" jdbcType="VARCHAR" property="transCondition" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    transactionid, userid, flightid, ticketid, trans_condition
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from transaction
+    where transactionid = #{transactionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from transaction
+    where transactionid = #{transactionid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.entity.Transaction">
+    insert into transaction (transactionid, userid, flightid, 
+      ticketid, trans_condition)
+    values (#{transactionid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{flightid,jdbcType=INTEGER}, 
+      #{ticketid,jdbcType=INTEGER}, #{transCondition,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.entity.Transaction">
+    insert into transaction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transactionid != null">
+        transactionid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="flightid != null">
+        flightid,
+      </if>
+      <if test="ticketid != null">
+        ticketid,
+      </if>
+      <if test="transCondition != null">
+        trans_condition,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transactionid != null">
+        #{transactionid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="flightid != null">
+        #{flightid,jdbcType=INTEGER},
+      </if>
+      <if test="ticketid != null">
+        #{ticketid,jdbcType=INTEGER},
+      </if>
+      <if test="transCondition != null">
+        #{transCondition,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.entity.Transaction">
+    update transaction
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="flightid != null">
+        flightid = #{flightid,jdbcType=INTEGER},
+      </if>
+      <if test="ticketid != null">
+        ticketid = #{ticketid,jdbcType=INTEGER},
+      </if>
+      <if test="transCondition != null">
+        trans_condition = #{transCondition,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where transactionid = #{transactionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.entity.Transaction">
+    update transaction
+    set userid = #{userid,jdbcType=INTEGER},
+      flightid = #{flightid,jdbcType=INTEGER},
+      ticketid = #{ticketid,jdbcType=INTEGER},
+      trans_condition = #{transCondition,jdbcType=VARCHAR}
+    where transactionid = #{transactionid,jdbcType=INTEGER}
+  </update>
+</mapper>

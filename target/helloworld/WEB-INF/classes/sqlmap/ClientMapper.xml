@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.dao.ClientMapper">
+  <resultMap id="BaseResultMap" type="com.springmvc.entity.Client">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="passport" jdbcType="VARCHAR" property="passport" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="preference" jdbcType="VARCHAR" property="preference" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, password, realname, passport, email, phone, preference
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectSelective" parameterType="com.springmvc.entity.Client" resultMap="BaseResultMap" resultType="java.util.ArrayList">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUsername" parameterType="com.springmvc.entity.Client" resultMap="BaseResultMap" resultType="java.util.ArrayList">
+    select
+    <include refid="Base_Column_List" />
+    from client
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from client
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.springmvc.entity.Client">
+    insert into client (userid, username, password, 
+      realname, passport, email, 
+      phone, preference)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{passport,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{preference,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springmvc.entity.Client">
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="passport != null">
+        passport,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="preference != null">
+        preference,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="passport != null">
+        #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="preference != null">
+        #{preference,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springmvc.entity.Client">
+    update client
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="passport != null">
+        passport = #{passport,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="preference != null">
+        preference = #{preference,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springmvc.entity.Client">
+    update client
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      passport = #{passport,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      preference = #{preference,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

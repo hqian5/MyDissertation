@@ -1,0 +1,176 @@
+/*!*set background and font*!*/
+/*body {*/
+/*  background-image: url("../images/music-festival-2.jpg");*/
+/*  background-size: 100%;*/
+/*  background-repeat: repeat;*/
+/*  font-family: Verdana, Genevs, Arial, sans-serif;*/
+/*  text-align: center;*/
+/*}*/
+
+/*!*set background and font for phone*!*/
+/*@media only screen and (max-width: 500px) {*/
+/*  body {*/
+/*    background-image: url("../images/music-festival-mobile-0.jpg");*/
+/*    background-size: 100%;*/
+/*    background-repeat: repeat;*/
+/*    font-family: Verdana, Genevs, Arial, sans-serif;*/
+/*    text-align: center;*/
+/*  }*/
+/*}*/
+
+/*set layout and appearance for login-frame*/
+#login_frame{
+
+  width: auto;
+  height: auto;
+  padding: 13px;
+
+  margin: 30px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+#manage_frame{
+
+  width: auto;
+  height: auto;
+  padding: 13px;
+
+  margin: 30px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+.manage_frame{
+
+  width: auto;
+  height: auto;
+  padding: 13px;
+
+  margin: 30px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+form p > *{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#index_frame{
+  width: 30%;
+  height: auto;
+  padding: 13px;
+
+  margin: 15% auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#result{
+  width: auto;
+  height: auto;
+  padding: 13px;
+
+  margin: 30px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/*set appearance for labels*/
+.label_input{
+
+  font-size: 1.5em;
+  width: auto;
+  height: auto;
+  line-height: 28px;
+  text-align: center;
+
+  color: white;
+  background-color: #495057;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 0;
+
+}
+
+/*set appearance for text fields*/
+.text_field{
+  width: auto;
+  height: auto;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+
+/*set appearance for buttons*/
+#login{
+
+  font-size: 1.5em;
+  width: auto;
+  height: auto;
+  line-height: 28px;
+  text-align: center;
+
+  color: white;
+  border-radius: 6px;
+  border: 0;
+
+  float: bottom;
+}
+
+#register{
+
+  font-size: 1.5em;
+  width: auto;
+  height: auto;
+  line-height: 28px;
+  text-align: center;
+
+  color: white;
+  border-radius: 6px;
+  border: 0;
+
+  float: bottom;
+}
+
+#login_control{
+  padding: 0 auto;
+}
+
+
+.btn-blue{
+  background-color: #6DA2D9;
+  box-shadow: 0 0 0 1px #6698cb inset,
+  0 0 0 2px rgba(255,255,255,0.15) inset,
+  0 8px 0 0 rgba(110, 164, 219, .7),
+  0 8px 0 1px rgba(0,0,0,.4),
+  0 8px 8px 1px rgba(0,0,0,0.5);
+}
+
+
+
+

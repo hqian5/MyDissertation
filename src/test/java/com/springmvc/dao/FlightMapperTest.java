@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class FlightMapperTest {
@@ -48,11 +47,11 @@ public class FlightMapperTest {
     @Test
     public void selectByFlightNumber() {
         Flight flight = new Flight();
-        flight.setFlightNumber("b");
+        flight.setFlightNumber("E222");
         ArrayList<Flight> list = mapper.selectByFlightNumber(flight);
         System.out.println(list.size());
         for (Flight f : list){
-            System.out.println(f.getFlightNumber());
+            System.out.println(f.getFlightNumber() + f.getDepartureTime());
         }
     }
 
@@ -66,7 +65,7 @@ public class FlightMapperTest {
 
     @Test
     public void deleteByPrimaryKey() {
-        int record = mapper.deleteByPrimaryKey(3);
+        int record = mapper.deleteByPrimaryKey(9);
         System.out.println(record);
 
     }

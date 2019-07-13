@@ -7,7 +7,6 @@ import com.springmvc.service.inter.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -86,7 +85,8 @@ public class AdminController {
                                  @RequestParam("arrival_time") String aTime, @RequestParam("departure_airport") String dAirport,
                                  @RequestParam("arrival_airport") String aAirport, @RequestParam("seat_number") int seatNo,
                                  @RequestParam("seat_free") int seatFree, @RequestParam("price") int price,
-                                 Model model, HttpSession session, @ModelAttribute Flight flight) throws ParseException {
+                                 @RequestParam("flight_status") String status, Model model, HttpSession session,
+                                 @ModelAttribute Flight flight) throws ParseException {
         ArrayList<Flight> list;
         Flight record = new Flight();
         flight.setFlightNumber(flightNo);
@@ -97,6 +97,8 @@ public class AdminController {
         flight.setSeatNumber(seatNo);
         flight.setSeatFree(seatFree);
         flight.setPrice(price);
+        flight.setFlightStatus(status);
+
         record.setFlightNumber(flight.getFlightNumber());
         record.setDepartureTime(flight.getDepartureTime());
         record.setArrivalTime(flight.getArrivalTime());
@@ -105,6 +107,7 @@ public class AdminController {
         record.setSeatNumber(flight.getSeatNumber());
         record.setSeatFree(flight.getSeatFree());
         record.setPrice(flight.getPrice());
+        record.setFlightStatus(flight.getFlightStatus());
         list = flightService.selectByFlightNumber(record);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
@@ -187,6 +190,8 @@ public class AdminController {
             int seat = flight.getSeatNumber();
             int seatFree = flight.getSeatFree();
             int price = flight.getPrice();
+            String status = flight.getFlightStatus();
+
             model.addAttribute("id", flightId);
             model.addAttribute("number", flightNumber);
             model.addAttribute("deTime", deTime);
@@ -196,6 +201,7 @@ public class AdminController {
             model.addAttribute("seat", seat);
             model.addAttribute("seatFree", seatFree);
             model.addAttribute("price", price);
+            model.addAttribute("flightStatus", status);
         }
         else {
             model.addAttribute("status", 3);
@@ -214,7 +220,8 @@ public class AdminController {
                                 @RequestParam("departure_time") String dTime, @RequestParam("arrival_time") String aTime,
                                 @RequestParam("departure_airport") String dAirport, @RequestParam("arrival_airport") String aAirport,
                                 @RequestParam("seat_number") int seatNo, @RequestParam("seat_free") int seatFree,
-                                @RequestParam("price_up") int price, Model model, HttpSession session) throws ParseException {
+                                @RequestParam("price_up") int price, @RequestParam("flightStatus") String status,
+                                Model model, HttpSession session) throws ParseException {
         Flight flight = new Flight();
         flight.setFlightid(id);
         flight.setFlightNumber(flightNo);
@@ -225,6 +232,7 @@ public class AdminController {
         flight.setSeatNumber(seatNo);
         flight.setSeatFree(seatFree);
         flight.setPrice(price);
+        flight.setFlightStatus(status);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         Date dForm = format.parse(dTime);
