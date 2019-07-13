@@ -108,23 +108,13 @@ public class AdminController {
         list = flightService.selectByFlightNumber(record);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date dForm = format.parse(flight.getDepartureTime());
-        Date aForm = format.parse(flight.getArrivalTime());
+        Date dForm = format.parse(dTime);
+        Date aForm = format.parse(aTime);
         Date date = new Date();
-        if ((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0){
+        if (((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0)
+                || ((aForm.getTime() - dForm.getTime()) <= 0) || (dAirport.equals(aAirport))
+                || (seatFree - seatNo > 0) || (seatNo <= 0 || seatFree < 0 || price <= 0)){
             model.addAttribute("status",3);
-        }
-        if((aForm.getTime() - dForm.getTime()) <= 0){
-            model.addAttribute("status", 3);
-        }
-        if (flight.getArrivalAirport().equals(flight.getDepartureAirport())){
-            model.addAttribute("status", 3);
-        }
-        if (seatFree - seatNo > 0){
-            model.addAttribute("status", 3);
-        }
-        else if (seatNo <= 0 || seatFree < 0 || price <= 0){
-            model.addAttribute("status", 3);
         }
         else if (list.size() != 0){
             model.addAttribute("status", 1);
@@ -237,29 +227,17 @@ public class AdminController {
         flight.setPrice(price);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date dForm = format.parse(flight.getDepartureTime());
-        Date aForm = format.parse(flight.getArrivalTime());
+        Date dForm = format.parse(dTime);
+        Date aForm = format.parse(aTime);
         Date date = new Date();
 
-        if ((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0){
-            System.out.println("fuck");
+        if (((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0)
+        || ((aForm.getTime() - dForm.getTime()) <= 0) || (dAirport.equals(aAirport))
+        || (seatFree - seatNo > 0) || (seatNo <= 0 || seatFree < 0 || price <= 0)){
             model.addAttribute("status",6);
-        }
-        if((aForm.getTime() - dForm.getTime()) <= 0){
-            model.addAttribute("status", 6);
-        }
-        if (flight.getArrivalAirport().equals(flight.getDepartureAirport())){
-            model.addAttribute("status", 6);
-        }
-        if (seatFree - seatNo > 0){
-            model.addAttribute("status", 6);
-        }
-        else if (seatNo <= 0 || seatFree < 0 || price <= 0){
-            model.addAttribute("status", 6);
         }
         else {
             if (flightService.updateByPrimaryKeySelective(flight) == 1){
-                System.out.println(444);
                 session.setAttribute("updateOK", flight);
                 model.addAttribute("status", 4);
             }
@@ -267,7 +245,6 @@ public class AdminController {
                 model.addAttribute("status", 5);
             }
         }
-        System.out.println("update: " + model);
         showAllFlights(model, session);
         return "manage";
     }

@@ -30,7 +30,7 @@
 <body>
 <div class="container">
     <div class="manage_frame">
-        <label>Please manage all flights</label>
+        <h2>Please manage all flights</h2>
     </div>
 </div>
 <c:if test="${empty flights}">
