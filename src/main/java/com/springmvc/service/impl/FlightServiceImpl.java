@@ -29,4 +29,16 @@ public class FlightServiceImpl implements FlightService {
     public ArrayList<Flight> selectAllFlights() {
         return mapper.selectAllFlights();
     }
+
+    public int deleteByPrimaryKey(Integer flightid) {
+        return mapper.deleteByPrimaryKey(flightid);
+    }
+
+    public Flight selectByPrimaryKey(Integer flightid) {
+        return mapper.selectByPrimaryKey(flightid);
+    }
+
+    public int updateByPrimaryKeySelective(Flight record) {
+        return mapper.updateByPrimaryKeySelective(record);
+    }
 }

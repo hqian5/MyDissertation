@@ -12,4 +12,10 @@ public interface FlightService {
     ArrayList<Flight> selectFlight(String record);
 
     ArrayList<Flight> selectAllFlights();
+
+    int deleteByPrimaryKey(Integer flightid);
+
+    Flight selectByPrimaryKey(Integer flightid);
+
+    int updateByPrimaryKeySelective(Flight record);
 }

@@ -63,4 +63,27 @@ public class FlightMapperTest {
             System.out.println(f.getFlightNumber());
         }
     }
+
+    @Test
+    public void deleteByPrimaryKey() {
+        int record = mapper.deleteByPrimaryKey(3);
+        System.out.println(record);
+
+    }
+
+    @Test
+    public void updateByPrimaryKeySelective() {
+        Flight flight = new Flight();
+        flight.setFlightid(8);
+        flight.setFlightNumber("update");
+        flight.setDepartureTime("b");
+        flight.setDepartureAirport("c");
+        flight.setArrivalTime("d");
+        flight.setArrivalAirport("e");
+        flight.setSeatNumber(50);
+        flight.setSeatFree(20);
+        flight.setPrice(10);
+        int record = mapper.updateByPrimaryKeySelective(flight);
+        System.out.println(record);
+    }
 }

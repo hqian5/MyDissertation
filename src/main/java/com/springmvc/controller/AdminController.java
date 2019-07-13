@@ -17,10 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -111,28 +108,23 @@ public class AdminController {
         list = flightService.selectByFlightNumber(record);
 
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date dForm = format.parse(dTime);
-        Date aForm = format.parse(aTime);
+        Date dForm = format.parse(flight.getDepartureTime());
+        Date aForm = format.parse(flight.getArrivalTime());
         Date date = new Date();
         if ((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0){
             model.addAttribute("status",3);
-            model.addAttribute("time1", 3);
         }
         if((aForm.getTime() - dForm.getTime()) <= 0){
             model.addAttribute("status", 3);
-            model.addAttribute("time2", 4);
         }
-        if (dAirport.equals(aAirport)){
+        if (flight.getArrivalAirport().equals(flight.getDepartureAirport())){
             model.addAttribute("status", 3);
-            model.addAttribute("airport", 5);
         }
         if (seatFree - seatNo > 0){
             model.addAttribute("status", 3);
-            model.addAttribute("seat", 6);
         }
-        if (seatNo <= 0 || seatFree < 0 || price <= 0){
+        else if (seatNo <= 0 || seatFree < 0 || price <= 0){
             model.addAttribute("status", 3);
-            model.addAttribute("price", 7);
         }
         else if (list.size() != 0){
             model.addAttribute("status", 1);
@@ -146,20 +138,142 @@ public class AdminController {
                 model.addAttribute("status", 2);
             }
         }
+        System.out.println("input: " + model);
         return "adminhome";
     }
 
-    @RequestMapping(value = "/manage/flights", method = RequestMethod.GET)
-    public String manageFlight(Model model, HttpSession session){
+    public void showAllFlights(Model model, HttpSession session){
         ArrayList<Flight> list;
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
         list = flightService.selectAllFlights();
         session.setAttribute("manageOK", list);
         model.addAttribute("manage", 0);
         map.put("flights", list);
-        for (Flight f : list){
-            System.out.println(f.getFlightNumber());
+        model.addAllAttributes(map);
+    }
+
+    @RequestMapping(value = "/manage/flights", method = RequestMethod.GET)
+    public String manageFlight(Model model, HttpSession session){
+        showAllFlights(model, session);
+        return "manage";
+    }
+
+    @RequestMapping(value = "/delete/flight", method = RequestMethod.GET)
+    public String deleteFlight(){
+        return "manage";
+    }
+
+    @RequestMapping(value = "/delete/flight", method = RequestMethod.POST)
+    public String deleteValidate(@RequestParam("flightId") int id, Model model, HttpSession session){
+        int record = flightService.deleteByPrimaryKey(id);
+        if (record == 1){
+            session.setAttribute("delete", record);
+            model.addAttribute("status", 0);
         }
+        else {
+            model.addAttribute("status", 1);
+        }
+        showAllFlights(model, session);
+        return "manage";
+    }
+
+    @RequestMapping(value = "/update/confirm", method = RequestMethod.GET)
+    public String updateFlight(){
+        return "manage";
+    }
+
+    @RequestMapping(value = "/update/confirm", method = RequestMethod.POST)
+    public String updateValidate(@RequestParam("flightId_up") int id, Model model, HttpSession session){
+        if (id != 0){
+            session.setAttribute("update", id);
+            model.addAttribute("status", 2);
+            Flight flight = flightService.selectByPrimaryKey(id);
+            int flightId = flight.getFlightid();
+            String flightNumber = flight.getFlightNumber();
+            String deTime = flight.getDepartureTime();
+            String arTime = flight.getArrivalTime();
+            String deAirport = flight.getDepartureAirport();
+            String arAirport = flight.getArrivalAirport();
+            int seat = flight.getSeatNumber();
+            int seatFree = flight.getSeatFree();
+            int price = flight.getPrice();
+            model.addAttribute("id", flightId);
+            model.addAttribute("number", flightNumber);
+            model.addAttribute("deTime", deTime);
+            model.addAttribute("arTime", arTime);
+            model.addAttribute("deAirport", deAirport);
+            model.addAttribute("arAirport", arAirport);
+            model.addAttribute("seat", seat);
+            model.addAttribute("seatFree", seatFree);
+            model.addAttribute("price", price);
+        }
+        else {
+            model.addAttribute("status", 3);
+        }
+        showAllFlights(model, session);
+        return "manage";
+    }
+
+    @RequestMapping(value = "/update/flight", method = RequestMethod.GET)
+    public String update(){
+        return "manage";
+    }
+
+    @RequestMapping(value = "/update/flight", method = RequestMethod.POST)
+    public String updateConfirm(@RequestParam("update_id") int id, @RequestParam("flight_number") String flightNo,
+                                @RequestParam("departure_time") String dTime, @RequestParam("arrival_time") String aTime,
+                                @RequestParam("departure_airport") String dAirport, @RequestParam("arrival_airport") String aAirport,
+                                @RequestParam("seat_number") int seatNo, @RequestParam("seat_free") int seatFree,
+                                @RequestParam("price_up") int price, Model model, HttpSession session) throws ParseException {
+        Flight flight = new Flight();
+        flight.setFlightid(id);
+        flight.setFlightNumber(flightNo);
+        flight.setDepartureTime(dTime);
+        flight.setArrivalTime(aTime);
+        flight.setDepartureAirport(dAirport);
+        flight.setArrivalAirport(aAirport);
+        flight.setSeatNumber(seatNo);
+        flight.setSeatFree(seatFree);
+        flight.setPrice(price);
+
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date dForm = format.parse(flight.getDepartureTime());
+        Date aForm = format.parse(flight.getArrivalTime());
+        Date date = new Date();
+
+        if ((dForm.getTime() - date.getTime() <= 0)||(aForm.getTime() - date.getTime()) <= 0){
+            System.out.println("fuck");
+            model.addAttribute("status",6);
+        }
+        if((aForm.getTime() - dForm.getTime()) <= 0){
+            model.addAttribute("status", 6);
+        }
+        if (flight.getArrivalAirport().equals(flight.getDepartureAirport())){
+            model.addAttribute("status", 6);
+        }
+        if (seatFree - seatNo > 0){
+            model.addAttribute("status", 6);
+        }
+        else if (seatNo <= 0 || seatFree < 0 || price <= 0){
+            model.addAttribute("status", 6);
+        }
+        else {
+            if (flightService.updateByPrimaryKeySelective(flight) == 1){
+                System.out.println(444);
+                session.setAttribute("updateOK", flight);
+                model.addAttribute("status", 4);
+            }
+            else {
+                model.addAttribute("status", 5);
+            }
+        }
+        System.out.println("update: " + model);
+        showAllFlights(model, session);
+        return "manage";
+    }
+
+    @RequestMapping(value = "/back/adminhome", method = RequestMethod.GET)
+    public String backAdminHome(){
         return "adminhome";
     }
 

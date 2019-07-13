@@ -51,6 +51,22 @@
 
 }
 
+.manage_frame{
+
+  width: auto;
+  height: auto;
+  padding: 13px;
+
+  margin: 30px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
 form p > *{
   display: inline-block;
   vertical-align: middle;
