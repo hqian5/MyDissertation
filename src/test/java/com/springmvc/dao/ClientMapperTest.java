@@ -65,4 +65,9 @@ public class ClientMapperTest {
             System.out.println(c.getUsername() + ": " + c.getRealname());
         }
     }
+
+    @Test
+    public void deleteByPrimaryKey() {
+        System.out.println(clientMapper.deleteByPrimaryKey(19));
+    }
 }

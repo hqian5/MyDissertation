@@ -50,6 +50,11 @@
                     <option value="Berlin">Berlin</option>
                     <option value="Amsterdam">Amsterdam</option>
                     <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
                     </select><br>
                     <br><label class="label_input">Arrival airport</label>
                     <br><select required id="arrival_airport" name="arrival_airport" class="text_field">
@@ -58,6 +63,11 @@
                     <option value="Berlin">Berlin</option>
                     <option value="Amsterdam">Amsterdam</option>
                     <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
                     </select><br>
 
                     <label id="airportRemind" style="color: blue">Departure airport and arrival airport should be different</label><br>
@@ -115,6 +125,12 @@
         }
         else if ('${status}' == 3){
             alert("Some information is wrong");
+        }
+        else if ('${status}' == 4){
+            alert("Flights generate successfully");
+        }
+        else if ('${status}' == 5){
+            alert("Wrong date or number");
         }
     }
 

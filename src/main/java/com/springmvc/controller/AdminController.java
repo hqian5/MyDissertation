@@ -262,4 +262,190 @@ public class AdminController {
         return "adminhome";
     }
 
+    @RequestMapping(value = "/generate/flights", method = RequestMethod.GET)
+    public String generateFlights(){
+        return "adminhome";
+    }
+
+    @RequestMapping(value = "/generate/flights", method = RequestMethod.POST)
+    public String generateValidate(@RequestParam("generateDate") String geDate, @RequestParam("generateNumber") int geNumber,
+                                   Model model, HttpSession session) throws ParseException {
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date start = dateFormat.parse(geDate);
+        if (start.getTime() < date.getTime() || geNumber <= 0){
+            model.addAttribute("status", 5);
+        }
+        else {
+            Flight[] flights = new Flight[geNumber];
+            ArrayList<Flight> check = new ArrayList<Flight>();
+            for (int i = 0; i < geNumber; i++){
+                Flight flight = new Flight();
+                flight.setFlightNumber(generateLetter() + generateNumber());
+                flight.setDepartureTime(generateStartTime(geDate));
+                flight.setArrivalTime(generateEndTime(flight.getDepartureTime()));
+                flight.setDepartureAirport(generateDeparture());
+                flight.setArrivalAirport(generateArrival(flight.getDepartureAirport()));
+                flight.setSeatNumber(generateSeat());
+                flight.setSeatFree(generateSeatFree(flight.getSeatNumber()));
+                flight.setPrice(generatePrice());
+                flight.setFlightStatus("On time");
+                flights[i] = flight;
+            }
+
+            for (int i = 0; i < flights.length - 1; i++){
+                check = flightService.selectByFlightNumber(flights[i]);
+                if (check.size() != 0){
+                    flightService.insert(flights[i+1]);
+                }
+                else {
+                    flightService.insert(flights[i]);
+                }
+            }
+            session.setAttribute("generate", flights);
+            model.addAttribute("status", 4);
+        }
+        return "adminhome";
+    }
+
+    @RequestMapping(value = "/multiple/delete", method = RequestMethod.GET)
+    public String multipleDelete(){
+        return "manage";
+    }
+
+    @RequestMapping(value = "/multiple/delete", method = RequestMethod.POST)
+    public String multipleValidate(@RequestParam("multipleId1") int idStart, @RequestParam("multipleId2") int idEnd,
+                                   Model model, HttpSession session){
+        if ((Integer)idStart == null || (Integer)idEnd == null){
+            model.addAttribute("status", 8);
+        }
+        else {
+            int length = (idEnd - idStart) + 1;
+            int[] ids = new int[length];
+            for (int i = 0; i < ids.length; i++){
+                ids[i] = idStart++;
+            }
+            for (int i : ids){
+                System.out.println(i);
+            }
+            for (int i : ids){
+                Flight check = flightService.selectByPrimaryKey(i);
+                if (check != null){
+                    flightService.deleteByPrimaryKey(i);
+                }
+                else {
+                    flightService.deleteByPrimaryKey(i+1);
+                }
+            }
+            session.setAttribute("multipleDelete", ids);
+            model.addAttribute("status", 7);
+        }
+        showAllFlights(model, session);
+        return "manage";
+    }
+
+    public String generateLetter(){
+        String letter = "";
+        for (int i = 0; i < 2; i++){
+            letter = letter + (char)(Math.random()*26 + 'A');
+        }
+        return letter;
+    }
+
+    public String generateNumber(){
+        String result = "";
+        Random random = new Random();
+        for (int i = 0; i < 4; i++){
+            result += random.nextInt(9)+1;
+        }
+        return result;
+    }
+
+    public String generateStartTime(String date){
+        Random random = new Random();
+        int hour = random.nextInt(24);
+        int minute = random.nextInt(60);
+        return date + 'T' + check(hour) + ':' + check(minute);
+    }
+
+    public String generateEndTime(String start){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Random random = new Random();
+        int duration = random.nextInt(500) + 60;
+        Calendar calendar = Calendar.getInstance();
+        String end = new String();
+        try {
+            Date startDate = dateFormat.parse(start);
+            calendar.setTime(startDate);
+            calendar.add(Calendar.MINUTE, duration);
+            Date endDate = calendar.getTime();
+            end = dateFormat.format(endDate);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return end;
+    }
+
+    public String generateDeparture(){
+        String[] airports = {"London", "Paris", "Berlin", "Amsterdam", "Helsinki", "Frankfurt", "Istanbul", "Munich", "Rome", "Moscow"};
+        Random random = new Random();
+        int i = random.nextInt(10);
+        String departure = airports[i];
+        return departure;
+    }
+
+    public String generateArrival(String departure){
+        String[] airports = {"London", "Paris", "Berlin", "Amsterdam", "Helsinki", "Frankfurt", "Istanbul", "Munich", "Rome", "Moscow"};
+        int index = deletePoint(airports, departure);
+        String[] arrivalAirports = delete(index, airports);
+        Random random = new Random();
+        int i = random.nextInt(9);
+        String arrival = arrivalAirports[i];
+        return arrival;
+    }
+
+    public int generateSeat(){
+        Random random = new Random();
+        int seat = random.nextInt(240) + 100;
+        return seat;
+    }
+
+    public int generateSeatFree(int seat){
+        return seat;
+    }
+
+    public int generatePrice(){
+        Random random = new Random();
+        int price = random.nextInt(250) + 50;
+        return price;
+    }
+
+    private String check(int num){
+        String number = num + "";
+        if (number.length() == 1){
+            return "0" + num;
+        }
+        else {
+            return number;
+        }
+    }
+
+    private int deletePoint(String[] array, String value){
+        for (int i = 0; i < array.length; i++){
+            if (array[i].equals(value)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private String[] delete(int index, String array[]) {
+        String[] arrNew = new String[array.length - 1];
+        for (int i = index; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        System.arraycopy(array, 0, arrNew, 0, arrNew.length);
+        return arrNew;
+    }
 }

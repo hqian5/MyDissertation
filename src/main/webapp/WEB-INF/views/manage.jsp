@@ -30,7 +30,8 @@
 <body>
 <div class="container">
     <div class="manage_frame">
-        <h2>Please manage all flights</h2>
+        <h2>Please manage all flights</h2><br>
+        <input type="button" value="Admin Home" onclick="location.href='/back/adminhome'" class="btn-blue"><br><br>
     </div>
 </div>
 <c:if test="${empty flights}">
@@ -42,7 +43,30 @@
 </c:if>
 <div class="container">
     <div id="login_frame">
-        <table class="table" align="center" valign="center">
+
+        <form id="deleteId" action="/delete/flight" method="post" style="display: none">
+            Confirm id: <input type="text" required id="flightId" name="flightId" style="width: 45px" class="text_field" readonly><br>
+            <br><input type="submit" value="Confirm delete" class="btn-blue">
+            <input type="button" value="Cancel" onclick="showAll1()" class="btn-blue">
+        </form>
+
+        <form id="updateId" action="/update/confirm" method="post" style="display: none">
+            Update id: <input type="text" required id="flightId_up" name="flightId_up" style="width: 45px" class="text_field" readonly><br>
+            <br><input type="submit" value="Begin update" class="btn-blue">
+            <input type="button" value="Cancel" onclick="showAll2()" class="btn-blue">
+        </form>
+
+        <form id="multipleDelete" action="/multiple/delete" method="post" style="display: none">
+            <input type="text" required id="middle" name="middle" style="width: 45px; display: none" class="text_field">
+            Delete flights from id:
+            <input type="text" required id="multipleId1" name="multipleId1" style="width: 45px" class="text_field" readonly>
+            to id:
+            <input type="text" required id="multipleId2" name="multipleId2" style="width: 45px" class="text_field" readonly><br>
+            <br><input type="submit" value="Confirm delete" class="btn-blue">
+            <input type="button" value="Cancel" onclick="showAll3()" class="btn-blue">
+        </form>
+
+        <table class="table" id="allFlights" align="center" valign="center">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -60,37 +84,27 @@
             <tbody>
             <c:forEach varStatus="s" items="${flights}" var="item">
             <tr>
-                <td id="id">${item.flightid}</td>
-                <td id="flightNumber">${item.flightNumber}</td>
-                <td id="deTime">${item.departureTime}</td>
-                <td id="arTime">${item.arrivalTime}</td>
-                <td id="deAirport">${item.departureAirport}</td>
-                <td id="arAirport">${item.arrivalAirport}</td>
-                <td id="seat">${item.seatNumber}</td>
-                <td id="seatFree">${item.seatFree}</td>
-                <td id="price">${item.price}</td>
-                <td id="status">${item.flightStatus}</td>
+                <td id="id" align="center" valign="center">${item.flightid}</td>
+                <td id="flightNumber" align="center" valign="center">${item.flightNumber}</td>
+                <td id="deTime" align="center" valign="center">${item.departureTime}</td>
+                <td id="arTime" align="center" valign="center">${item.arrivalTime}</td>
+                <td id="deAirport" align="center" valign="center">${item.departureAirport}</td>
+                <td id="arAirport" align="center" valign="center">${item.arrivalAirport}</td>
+                <td id="seat" align="center" valign="center">${item.seatNumber}</td>
+                <td id="seatFree" align="center" valign="center">${item.seatFree}</td>
+                <td id="price" align="center" valign="center">${item.price}</td>
+                <td id="status" align="center" valign="center">${item.flightStatus}</td>
 
                 <td><input type="button" value="update" onclick="showId2();
                 document.getElementById('flightId_up').value = '${item.flightid}'" class="btn-blue"></td>
                 <td><input type="button" value="delete" onclick="showId();
                 document.getElementById('flightId').value = '${item.flightid}'" class="btn-blue"></td>
+                <td><input type="button" value="Delete multiple flights" class="btn-blue"
+                           onclick="document.getElementById('middle').value = '${item.flightid}';showId3()"></td>
             </tr>
             </tbody>
             </c:forEach>
         </table>
-
-        <input type="button" value="Back" onclick="location.href='/back/adminhome'" class="btn-blue"><br><br>
-
-        <form id="deleteId" action="/delete/flight" method="post" style="display: none">
-            Confirm id: <input type="text" required id="flightId" name="flightId" style="width: 45px" class="text_field" readonly><br>
-            <br><input type="submit" value="Confirm delete" class="btn-blue">
-        </form>
-
-        <form id="updateId" action="/update/confirm" method="post" style="display: none">
-            Update id: <input type="text" required id="flightId_up" name="flightId_up" style="width: 45px" class="text_field" readonly><br>
-            <br><input type="submit" value="Begin update" class="btn-blue">
-        </form>
 
         <form id="updateWindow" action="/update/flight" method="post" style="display: none">
             <label class="label_input">Flight Id</label>
@@ -111,6 +125,11 @@
             <option value="Berlin">Berlin</option>
             <option value="Amsterdam">Amsterdam</option>
             <option value="Helsinki">Helsinki</option>
+            <option value="Frankfurt">Frankfurt</option>
+            <option value="Istanbul">Istanbul</option>
+            <option value="Munich">Munich</option>
+            <option value="Rome">Rome</option>
+            <option value="Moscow">Moscow</option>
             </select><br>
             <br><label class="label_input">Arrival airport</label>
             <br><select required id="arrival_airport" name="arrival_airport" class="text_field">
@@ -119,6 +138,11 @@
             <option value="Berlin">Berlin</option>
             <option value="Amsterdam">Amsterdam</option>
             <option value="Helsinki">Helsinki</option>
+            <option value="Frankfurt">Frankfurt</option>
+            <option value="Istanbul">Istanbul</option>
+            <option value="Munich">Munich</option>
+            <option value="Rome">Rome</option>
+            <option value="Moscow">Moscow</option>
             </select><br>
 
             <label id="airportRemind" style="color: blue;">Departure airport and arrival airport should be different</label><br>
@@ -139,6 +163,7 @@
             </select><br>
 
             <br><input type="submit" value="Confirm update" class="btn-blue">
+            <input type="button" value="Cancel" onclick="showAll()" class="btn-blue">
         </form>
     </div>
 </div>
@@ -162,6 +187,7 @@
             document.getElementById("seat_free").value = '${seatFree}';
             document.getElementById("price_up").value = '${price}';
             document.getElementById("updateWindow").style.display = "";
+            document.getElementById("allFlights").style.display = "none";
         }
         else if ('${status}' == 3){
             alert("The flight does not exist");
@@ -175,14 +201,64 @@
         else if ('${status}' == 6){
             alert("Some information is wrong");
         }
+        else if ('${status}' == 7){
+            alert("Multiple delete successfully");
+        }
+        else if ('${status}' == 8){
+            alert("Two ids are required");
+        }
     }
 
     function showId() {
         document.getElementById("deleteId").style.display = "";
+        document.getElementById("allFlights").style.display = "none";
     }
 
     function showId2() {
         document.getElementById("updateId").style.display = "";
+        document.getElementById("allFlights").style.display = "none";
     }
+
+    function showId3() {
+        document.getElementById("multipleDelete").style.display = "";
+        var middle = document.getElementById("middle").value;
+        var multiple1 = document.getElementById("multipleId1").value;
+        if (multiple1 == '' || multiple1 == null || multiple1 == undefined){
+            document.getElementById("multipleId1").value = middle;
+        }
+        else {
+            document.getElementById("multipleId2").value = middle;
+            if (parseFloat(document.getElementById("multipleId1").value) >= parseFloat(document.getElementById("multipleId2").value)){
+                alert("The second id should be more than the first one");
+                document.getElementById("multipleId2").value = "";
+            }
+            else {
+                document.getElementById("allFlights").style.display = "none";
+            }
+        }
+    }
+
+    function showAll() {
+        document.getElementById("updateWindow").style.display = "none";
+        document.getElementById("allFlights").style.display = "";
+    }
+
+    function showAll1() {
+        document.getElementById("deleteId").style.display = "none";
+        document.getElementById("allFlights").style.display = "";
+    }
+
+    function showAll2() {
+        document.getElementById("updateId").style.display = "none";
+        document.getElementById("allFlights").style.display = "";
+    }
+
+    function showAll3() {
+        document.getElementById("multipleDelete").style.display = "none";
+        document.getElementById("multipleId1").value = "";
+        document.getElementById("multipleId2").value = "";
+        document.getElementById("allFlights").style.display = "";
+    }
+
 </script>
 </html>
