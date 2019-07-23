@@ -20,6 +20,7 @@
     <mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/styles/" mapping="/styles/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/bootstrap-4.3.1-dist/" mapping="/bootstrap-4.3.1-dist/**"/>
 
     <!-- Configures the @Controller programming model
     <mvc:annotation-driven />-->

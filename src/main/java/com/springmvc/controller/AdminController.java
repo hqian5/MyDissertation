@@ -7,6 +7,7 @@ import com.springmvc.service.inter.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -293,10 +294,10 @@ public class AdminController {
                 flights[i] = flight;
             }
 
-            for (int i = 0; i < flights.length - 1; i++){
+            for (int i = 0; i < flights.length; i++){
                 check = flightService.selectByFlightNumber(flights[i]);
                 if (check.size() != 0){
-                    flightService.insert(flights[i+1]);
+                    continue;
                 }
                 else {
                     flightService.insert(flights[i]);
@@ -417,7 +418,7 @@ public class AdminController {
 
     public int generatePrice(){
         Random random = new Random();
-        int price = random.nextInt(250) + 50;
+        int price = random.nextInt(170) + 30;
         return price;
     }
 
@@ -447,5 +448,131 @@ public class AdminController {
         }
         System.arraycopy(array, 0, arrNew, 0, arrNew.length);
         return arrNew;
+    }
+
+    @RequestMapping(value = "/flights/simulation", method = RequestMethod.GET)
+    public String goSimulation(){
+        return "simulation";
+    }
+
+    @RequestMapping(value = "/select/airport", method = RequestMethod.GET)
+    public String selectAirport(){
+        return "simulation";
+    }
+
+    @RequestMapping(value = "/select/airport", method = RequestMethod.POST)
+    public String selectValidate(@RequestParam("select_departure") String departure,
+                                 Model model, HttpSession session){
+        ArrayList<Flight> list = flightService.selectByDepartureAirport(departure);
+        Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
+        if (list.size() == 0){
+            model.addAttribute("status", 0);
+        }
+        else {
+            for (Flight f : list){
+                setOffset(f);
+                flightService.updateByPrimaryKeySelective(f);
+            }
+            session.setAttribute("simulation", list);
+            model.addAttribute("status", 1);
+            model.addAttribute("time", "00:00");
+            model.addAttribute("airport", list.get(0).getDepartureAirport());
+            map.put("simulationFlights", list);
+            model.addAllAttributes(map);
+        }
+        return "simulation";
+    }
+
+    public void setOffset(Flight flight){
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date departureNew = new Date();
+        Random random = new Random();
+
+        String departTime = flight.getDepartureTime();
+        int offset = (random.nextInt(340)+20) *60 * 1000;
+
+        try {
+            Date departure = format.parse(departTime);
+            departureNew.setTime(departure.getTime() + offset);
+            if (departureNew.getTime() - departure.getTime() <= 7200000){
+                flight.setFlightStatus("On time");
+            }
+            else if (departureNew.getTime() - departure.getTime() > 7200000
+            && departureNew.getTime() - departure.getTime() <= 18000000){
+                flight.setFlightStatus("Delayed to " + format.format(departureNew));
+            }
+            else {
+                flight.setFlightStatus("Cancelled");
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/simulating/flights", method = RequestMethod.POST)
+    public String test(Model model, HttpSession session, @RequestParam("simulationTime") String time,
+                       @RequestParam("simulationAirport") String airport) throws ParseException {
+
+        DateFormat format = new SimpleDateFormat("HH:mm");
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        Date timeNow = format.parse(time);
+        Date timeNext = new Date();
+        timeNext.setTime(timeNow.getTime() + 30*60*1000);
+        String end = "00:00";
+        model.addAttribute("airport", airport);
+        model.addAttribute("time", format.format(timeNext));
+
+        if (format.format(timeNext).equals(end)){
+            showSimulatedFlights(model, airport);
+            model.addAttribute("status", 9);
+            return "manage";
+        }
+        else {
+            ArrayList<Flight> check = flightService.selectByDepartureAirport(airport);
+            Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
+
+            if (check.size() != 0){
+                for (Flight f : check){
+                    if (f.getFlightStatus().equals("On time")){
+                        Date middle1 = format1.parse(f.getDepartureTime());
+                        String middle2 = format.format(middle1);
+                        Date departure = format.parse(middle2);
+                        if (departure.getTime() - timeNext.getTime() <= 0){
+                            f.setFlightStatus("Already taken off");
+                        }
+                    }
+                    else if (f.getFlightStatus().equals("Cancelled")
+                    || f.getFlightStatus().equals("Already taken off")){
+                        f.setFlightStatus(f.getFlightStatus());
+                    }
+                    else {
+                        String origin = f.getFlightStatus();
+                        String altered = origin.substring(11);
+                        Date middle1 = format1.parse(altered);
+                        String middle2 = format.format(middle1);
+                        Date departure = format.parse(middle2);
+                        if (departure.getTime() - timeNext.getTime() <= 0){
+                            f.setFlightStatus("Already taken off");
+                        }
+                    }
+                    flightService.updateByPrimaryKeySelective(f);
+                }
+                map.put("simulationFlights", check);
+                model.addAllAttributes(map);
+                session.setAttribute("simulationOk", check);
+            }
+            else {
+                model.addAttribute("status", 0);
+            }
+        }
+        return "simulation";
+    }
+
+    public void showSimulatedFlights(Model model, String airport){
+        ArrayList<Flight> list = flightService.selectByDepartureAirport(airport);
+        Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
+        map.put("flights", list);
+        model.addAllAttributes(map);
     }
 }

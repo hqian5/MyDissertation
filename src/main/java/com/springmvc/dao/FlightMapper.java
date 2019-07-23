@@ -22,4 +22,8 @@ public interface FlightMapper {
     ArrayList<Flight> selectFlight(String record);
 
     ArrayList<Flight> selectAllFlights();
+
+    ArrayList<Flight> selectByDepartureAirport(String record);
+
+    ArrayList<Flight> selectByDateAndAirports(Flight record);
 }

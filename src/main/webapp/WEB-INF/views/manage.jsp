@@ -32,18 +32,20 @@
     <div class="manage_frame">
         <h2>Please manage all flights</h2><br>
         <input type="button" value="Admin Home" onclick="location.href='/back/adminhome'" class="btn-blue"><br><br>
+        <input type="button" value="Flights Simulation" onclick="showSimulation()" class="btn-blue">
+        <br><br>
     </div>
 </div>
 <c:if test="${empty flights}">
-    <div class="container">
-        <div id="index_frame">
-            <label class="label_input">There is no data</label>
-        </div>
+<div class="container">
+    <div id="index_frame">
+        <label class="label_input">There is no data</label>
     </div>
+</div>
 </c:if>
+
 <div class="container">
     <div id="login_frame">
-
         <form id="deleteId" action="/delete/flight" method="post" style="display: none">
             Confirm id: <input type="text" required id="flightId" name="flightId" style="width: 45px" class="text_field" readonly><br>
             <br><input type="submit" value="Confirm delete" class="btn-blue">
@@ -66,41 +68,61 @@
             <input type="button" value="Cancel" onclick="showAll3()" class="btn-blue">
         </form>
 
+        <form id="selectSimulationAirport" action="/select/airport" method="post" style="display: none">
+            <label class="label_input">Please select simulation airport</label><br><br>
+            <select id="select_departure" name="select_departure" class="text_field" required>
+                <option value="London">London</option>
+                <option value="Paris">Paris</option>
+                <option value="Berlin">Berlin</option>
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Helsinki">Helsinki</option>
+                <option value="Frankfurt">Frankfurt</option>
+                <option value="Istanbul">Istanbul</option>
+                <option value="Munich">Munich</option>
+                <option value="Rome">Rome</option>
+                <option value="Moscow">Moscow</option>
+            </select><br>
+            <br><input type="submit" class="btn-blue">
+            <input type="button" value="Cancel" onclick="showAll4()" class="btn-blue">
+        </form><br>
+
         <table class="table" id="allFlights" align="center" valign="center">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Flight number</th>
-                <th scope="col">Departure time</th>
-                <th scope="col">Arrival time</th>
-                <th scope="col">Departure airport</th>
-                <th scope="col">Arrival airport</th>
-                <th scope="col">Seat number</th>
-                <th scope="col">Available seat number</th>
-                <th scope="col">Price</th>
-                <th scope="col">Status</th>
+                <th scope="col" align="center" valign="center">ID</th>
+                <th scope="col" align="center" valign="center">Flight number</th>
+                <th scope="col" align="center" valign="center">Departure time</th>
+                <th scope="col" align="center" valign="center">Arrival time</th>
+                <th scope="col" align="center" valign="center">Departure airport</th>
+                <th scope="col" align="center" valign="center">Arrival airport</th>
+                <th scope="col" align="center" valign="center">Seat number</th>
+                <th scope="col" align="center" valign="center">Available seat number</th>
+                <th scope="col" align="center" valign="center">Price</th>
+                <th scope="col" align="center" valign="center">Status</th>
+                <th scope="col" align="center" valign="center">Actions</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach varStatus="s" items="${flights}" var="item">
             <tr>
-                <td id="id" align="center" valign="center">${item.flightid}</td>
-                <td id="flightNumber" align="center" valign="center">${item.flightNumber}</td>
-                <td id="deTime" align="center" valign="center">${item.departureTime}</td>
-                <td id="arTime" align="center" valign="center">${item.arrivalTime}</td>
-                <td id="deAirport" align="center" valign="center">${item.departureAirport}</td>
-                <td id="arAirport" align="center" valign="center">${item.arrivalAirport}</td>
-                <td id="seat" align="center" valign="center">${item.seatNumber}</td>
-                <td id="seatFree" align="center" valign="center">${item.seatFree}</td>
-                <td id="price" align="center" valign="center">${item.price}</td>
-                <td id="status" align="center" valign="center">${item.flightStatus}</td>
-
-                <td><input type="button" value="update" onclick="showId2();
-                document.getElementById('flightId_up').value = '${item.flightid}'" class="btn-blue"></td>
-                <td><input type="button" value="delete" onclick="showId();
-                document.getElementById('flightId').value = '${item.flightid}'" class="btn-blue"></td>
-                <td><input type="button" value="Delete multiple flights" class="btn-blue"
-                           onclick="document.getElementById('middle').value = '${item.flightid}';showId3()"></td>
+                <td align="center" valign="center">${item.flightid}</td>
+                <td align="center" valign="center">${item.flightNumber}</td>
+                <td align="center" valign="center">${item.departureTime}</td>
+                <td align="center" valign="center">${item.arrivalTime}</td>
+                <td align="center" valign="center">${item.departureAirport}</td>
+                <td align="center" valign="center">${item.arrivalAirport}</td>
+                <td align="center" valign="center">${item.seatNumber}</td>
+                <td align="center" valign="center">${item.seatFree}</td>
+                <td align="center" valign="center">${item.price}</td>
+                <td align="center" valign="center">${item.flightStatus}</td>
+                <td align="center" valign="center">
+                    <input type="button" value="update" onclick="showId2();
+                    document.getElementById('flightId_up').value = '${item.flightid}'" class="btn-blue"><br><br>
+                    <input type="button" value="delete" onclick="showId();
+                    document.getElementById('flightId').value = '${item.flightid}'" class="btn-blue"><br><br>
+                    <input type="button" value="multi-delete" class="btn-blue"
+                    onclick="document.getElementById('middle').value = '${item.flightid}';showId3()"><br><br>
+                </td>
             </tr>
             </tbody>
             </c:forEach>
@@ -168,6 +190,7 @@
     </div>
 </div>
 </body>
+
 <script>
     if ('${status}' != ''){
         if ('${status}' == 0) {
@@ -206,6 +229,9 @@
         }
         else if ('${status}' == 8){
             alert("Two ids are required");
+        }
+        else if ('${status}' == 9){
+            alert("Simulation is over");
         }
     }
 
@@ -260,5 +286,14 @@
         document.getElementById("allFlights").style.display = "";
     }
 
+    function showAll4() {
+        document.getElementById("allFlights").style.display = "";
+        document.getElementById("selectSimulationAirport").style.display = "none";
+    }
+
+    function showSimulation() {
+        document.getElementById("allFlights").style.display = "none";
+        document.getElementById("selectSimulationAirport").style.display = "";
+    }
 </script>
 </html>

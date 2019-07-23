@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -73,7 +75,7 @@ public class UserController {
             }
             else {
                 record = list.get(0);
-                httpSession.setAttribute("userhome", record);
+                httpSession.setAttribute("userhome", client);
                 model.addAttribute("status", 0);
             }
 
@@ -165,7 +167,38 @@ public class UserController {
     }
 
     @RequestMapping(value = "/back/userhome", method = RequestMethod.GET)
-    public String backUser(){
+    public String backUser(Model model, HttpSession session){
+        Client client = (Client) session.getAttribute("userhome");
+        if (client != null){
+            model.addAttribute("user", client);
+        }
         return "userhome";
     }
+
+    @RequestMapping(value = "/buy/tickets", method = RequestMethod.GET)
+    public String buyTickets(){
+        return "userhome";
+    }
+
+    @RequestMapping(value = "/buy/tickets", method = RequestMethod.POST)
+    public String buyValidate(@RequestParam("ticketDate") String date, @RequestParam("ticketFrom") String departure,
+                              @RequestParam("ticketTo") String arrival, Model model, HttpSession session){
+        Flight flight = new Flight();
+        flight.setDepartureTime(date);
+        flight.setDepartureAirport(departure);
+        flight.setArrivalAirport(arrival);
+        ArrayList<Flight> list = flightService.selectByDateAndAirports(flight);
+        if (list.size() == 0){
+            model.addAttribute("status", 2);
+        }
+        else {
+            Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
+            map.put("tickets", list);
+            model.addAllAttributes(map);
+            session.setAttribute("getTickets", list);
+            model.addAttribute("status", 3);
+        }
+        return "userhome";
+    }
+
 }

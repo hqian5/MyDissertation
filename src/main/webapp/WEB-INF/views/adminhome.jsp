@@ -33,7 +33,7 @@
         <h2>Flights Generator</h2>
         <div class="row">
             <div class="col-md">
-                <form id="flightInput" action="/input/flight" method="post" class="form-control">
+                <form id="flightInput" action="/input/flight" method="post" >
                     <label class="label_input">Flight number</label>
                     <br><input type="text" required id="flight_number" name="flight_number" class="text_field"><br>
                     <br><label class="label_input">Departure time</label>
@@ -42,8 +42,8 @@
                     <label class="label_input">Arrival time</label>
                     <br><input type="datetime-local" required id="arrival_time" name="arrival_time" class="text_field"><br>
                     <label id="timeRemind2" style="color: blue">Arrival time should be later than departure time</label><br>
-                    <label class="label_input">Departure airport</label>
 
+                    <label class="label_input">Departure airport</label>
                     <br><select required id="departure_airport" name="departure_airport" class="text_field">
                     <option value="London">London</option>
                     <option value="Paris">Paris</option>
@@ -93,7 +93,7 @@
                     <input type="button" value="Log out" onclick="location.href='/admin/logout'" class="btn-blue">
                 </form>
 
-                <form id="generateFlights" action="/generate/flights" method="post" style="display: none" class="form-control">
+                <form id="generateFlights" action="/generate/flights" method="post" style="display: none">
                     <label class="label_input">Choose the date</label><br>
                     <input type="date" id="generateDate" name="generateDate" class="text_field" required><br>
                     <label style="color: blue">The date should not be a past one</label><br>

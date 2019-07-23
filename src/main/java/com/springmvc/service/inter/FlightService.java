@@ -19,4 +19,8 @@ public interface FlightService {
     Flight selectByPrimaryKey(Integer flightid);
 
     int updateByPrimaryKeySelective(Flight record);
+
+    ArrayList<Flight> selectByDepartureAirport(String record);
+
+    ArrayList<Flight> selectByDateAndAirports(Flight record);
 }

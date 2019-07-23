@@ -40,6 +40,22 @@
     <include refid="Base_Column_List"/>
     from flight
   </select>
+  <select id="selectByDepartureAirport" parameterType="java.lang.String" resultMap="BaseResultMap" resultType="java.util.ArrayList">
+    select
+    <include refid="Base_Column_List"/>
+    from flight
+    where departure_airport = #{departureAirport,jdbcType=VARCHAR}
+    order by str_to_date(departure_time, '%Y-%m-%dT%H:%i')
+  </select>
+  <select id="selectByDateAndAirports" parameterType="com.springmvc.entity.Flight" resultMap="BaseResultMap" resultType="java.util.ArrayList">
+    select
+    <include refid="Base_Column_List"/>
+    from flight
+    where substring(departure_time, 1, 10) = #{departureTime,jdbcType=VARCHAR}
+     and departure_airport = #{departureAirport,jdbcType=VARCHAR}
+     and arrival_airport = #{arrivalAirport,jdbcType=VARCHAR}
+     order by str_to_date(departure_time, '%Y-%m-%dT%H:%i')
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from flight
     where flightid = #{flightid,jdbcType=INTEGER}

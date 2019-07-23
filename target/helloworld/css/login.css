@@ -51,6 +51,22 @@
 
 }
 
+#table_frame{
+
+  width: auto;
+  height: auto;
+  padding: 5px;
+
+  margin: 15px auto;
+
+  background-color: rgba(240, 255, 255, 0.2);
+
+  border-style: outset;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
 .manage_frame{
 
   width: auto;

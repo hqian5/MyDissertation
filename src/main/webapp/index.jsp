@@ -17,7 +17,7 @@
 </style>
 <body>
 <div class="container">
-    <div id="index_frame">
+    <div id="login_frame">
         <h2>Welcome to Birds Tracker</h2>
         <div class="row">
             <div class="col-md">

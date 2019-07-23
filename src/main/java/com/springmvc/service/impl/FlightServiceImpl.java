@@ -41,4 +41,12 @@ public class FlightServiceImpl implements FlightService {
     public int updateByPrimaryKeySelective(Flight record) {
         return mapper.updateByPrimaryKeySelective(record);
     }
+
+    public ArrayList<Flight> selectByDepartureAirport(String record) {
+        return mapper.selectByDepartureAirport(record);
+    }
+
+    public ArrayList<Flight> selectByDateAndAirports(Flight record) {
+        return mapper.selectByDateAndAirports(record);
+    }
 }

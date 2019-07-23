@@ -33,7 +33,7 @@
         <h2>Flights Generator</h2>
         <div class="row">
             <div class="col-md">
-                <form id="flightInput" action="/input/flight" method="post" class="form-control">
+                <form id="flightInput" action="/input/flight" method="post" >
                     <label class="label_input">Flight number</label>
                     <br><input type="text" required id="flight_number" name="flight_number" class="text_field"><br>
                     <br><label class="label_input">Departure time</label>
@@ -42,14 +42,19 @@
                     <label class="label_input">Arrival time</label>
                     <br><input type="datetime-local" required id="arrival_time" name="arrival_time" class="text_field"><br>
                     <label id="timeRemind2" style="color: blue">Arrival time should be later than departure time</label><br>
-                    <label class="label_input">Departure airport</label>
 
+                    <label class="label_input">Departure airport</label>
                     <br><select required id="departure_airport" name="departure_airport" class="text_field">
                     <option value="London">London</option>
                     <option value="Paris">Paris</option>
                     <option value="Berlin">Berlin</option>
                     <option value="Amsterdam">Amsterdam</option>
                     <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
                     </select><br>
                     <br><label class="label_input">Arrival airport</label>
                     <br><select required id="arrival_airport" name="arrival_airport" class="text_field">
@@ -58,6 +63,11 @@
                     <option value="Berlin">Berlin</option>
                     <option value="Amsterdam">Amsterdam</option>
                     <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
                     </select><br>
 
                     <label id="airportRemind" style="color: blue">Departure airport and arrival airport should be different</label><br>
@@ -83,7 +93,7 @@
                     <input type="button" value="Log out" onclick="location.href='/admin/logout'" class="btn-blue">
                 </form>
 
-                <form id="generateFlights" action="/generate/flights" method="post" style="display: none" class="form-control">
+                <form id="generateFlights" action="/generate/flights" method="post" style="display: none">
                     <label class="label_input">Choose the date</label><br>
                     <input type="date" id="generateDate" name="generateDate" class="text_field" required><br>
                     <label style="color: blue">The date should not be a past one</label><br>
@@ -115,6 +125,12 @@
         }
         else if ('${status}' == 3){
             alert("Some information is wrong");
+        }
+        else if ('${status}' == 4){
+            alert("Flights generate successfully");
+        }
+        else if ('${status}' == 5){
+            alert("Wrong date or number");
         }
     }
 

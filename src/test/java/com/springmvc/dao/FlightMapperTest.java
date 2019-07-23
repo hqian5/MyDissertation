@@ -214,4 +214,25 @@ public class FlightMapperTest {
         return arrNew;
     }
 
+    @Test
+    public void selectByDepartureAirport() {
+        ArrayList<Flight> list = new ArrayList<Flight>();
+        list = mapper.selectByDepartureAirport("London");
+        for (Flight f : list){
+            System.out.println(f.getFlightNumber() + ", " + f.getDepartureTime() + ", " + f.getDepartureAirport());
+        }
+    }
+
+    @Test
+    public void selectByDateAndAirports() {
+        Flight flight = new Flight();
+        flight.setDepartureTime("2019-07-25");
+        flight.setDepartureAirport("London");
+        flight.setArrivalAirport("Paris");
+        ArrayList<Flight> list = mapper.selectByDateAndAirports(flight);
+        for (Flight f : list){
+            System.out.println(f.getFlightNumber() + ": " + f.getDepartureAirport() + ", "
+                    + f.getArrivalAirport() + ", " + f.getDepartureTime());
+        }
+    }
 }

@@ -31,14 +31,47 @@
 <div id="tracker" class="container">
     <div id="login_frame">
         <c:if test="${not empty user}">
-            <h2>${user.username}, welcome to Birds Tracker<br></h2>
+            <h2>${user.username}, welcome to Birds Tracker</h2>
         </c:if>
         <div class="row">
             <div class="col-md">
                 <form id="flightSearch" action="/search/flight" method="post">
                     Please track your flight by typing the flight number
-                    <br><input type="text" required id="flight_no" name="flight_no" class="text_field"><br>
-                    <input type="submit" id="search" class="btn-blue">
+                    <br><input type="text" required id="flight_no" name="flight_no" class="text_field"><br><br>
+                    <input type="submit" value="Track" class="btn-blue">
+                </form>
+
+                <form id="buyTickets" action="/buy/tickets" method="post">
+                    <h2>Please search tickets</h2>
+                    Departure date:
+                    <br><input type="date" id="ticketDate" name="ticketDate" class="text_field" required><br>
+                    Departure from:
+                    <br><select id="ticketFrom" name="ticketFrom" class="text_field">
+                    <option value="London">London</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
+                </select><br>
+                    To:
+                    <br><select id="ticketTo" name="ticketTo" class="text_field">
+                    <option value="London">London</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Helsinki">Helsinki</option>
+                    <option value="Frankfurt">Frankfurt</option>
+                    <option value="Istanbul">Istanbul</option>
+                    <option value="Munich">Munich</option>
+                    <option value="Rome">Rome</option>
+                    <option value="Moscow">Moscow</option>
+                </select><br><br>
+                    <input type="submit" value="Search" class="btn-blue">
                     <input type="button" value="log out" onclick="location.href='/user/logout'" class="btn-blue">
                     <br><br>
                 </form>
@@ -61,6 +94,63 @@
         </div>
     </div>
 </div>
+
+<div id="manage_frame" class="container" style="display: none">
+    <h2>Please check the tickets</h2>
+    <div class="row">
+        <div class="col-md">
+            <table class="table" id="tickets" align="center" valign="center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" align="center" valign="center" style="display: none">ID</th>
+                    <th scope="col" align="center" valign="center">Flight number</th>
+                    <th scope="col" align="center" valign="center">Departure time</th>
+                    <th scope="col" align="center" valign="center">Arrival time</th>
+                    <th scope="col" align="center" valign="center">Departure airport</th>
+                    <th scope="col" align="center" valign="center">Arrival airport</th>
+                    <th scope="col" align="center" valign="center">Seat number</th>
+                    <th scope="col" align="center" valign="center">Available seat number</th>
+                    <th scope="col" align="center" valign="center">Price</th>
+                    <th scope="col" align="center" valign="center">Buy</th>
+                    <%--            <th scope="col" align="center" valign="center">Status</th>--%>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach varStatus="s" items="${tickets}" var="item">
+                    <tr>
+                        <td align="center" valign="center" style="display: none">${item.flightid}</td>
+                        <td align="center" valign="center">${item.flightNumber}</td>
+                        <td align="center" valign="center">${item.departureTime}</td>
+                        <td align="center" valign="center">${item.arrivalTime}</td>
+                        <td align="center" valign="center">${item.departureAirport}</td>
+                        <td align="center" valign="center">${item.arrivalAirport}</td>
+                        <td align="center" valign="center">${item.seatNumber}</td>
+                        <td align="center" valign="center">${item.seatFree}</td>
+                        <td align="center" valign="center">${item.price}</td>
+                        <td align="center" valign="center">
+                            <input type="button" value="Buy" class="btn-blue" onclick="confirmBuy();
+                            document.getElementById('confirmId').value = '${item.flightid}';
+                            document.getElementById('confirmFlight').value = '${item.flightNumber}'">
+                        </td>
+                            <%--                <td align="center" valign="center">${item.flightStatus}</td>--%>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table><br>
+
+            <form id="buyConfirm" action="/buy/confirm" method="post" style="display: none">
+                <input type="text" id="confirmId" name="confirmId" class="text_field" readonly required style="display: none"><br>
+                Confirm flight number:
+                <br><input type="text" id="confirmFlight" name="confirmFlight" class="text_field" style="width: 90px" readonly required><br><br>
+                <input type="submit" value="Confirm" class="btn-blue">
+                <input type="button" value="Cancel" class="btn-blue" onclick="showTickets()">
+            </form>
+
+            <input type="button" value="Homepage" class="btn-blue" onclick="showHome()">
+        </div>
+    </div>
+</div>
+
 </body>
 <script>
     if ('${status}' != ''){
@@ -80,6 +170,28 @@
             document.getElementById("arrivalAirport").innerText = 'Arrival airport: ${searchResult.arrivalAirport}';
             document.getElementById("flightStatus").innerText = 'Status : ${searchResult.flightStatus}';
         }
+        else if ('${status}' == 2){
+            alert("There is no tickets available");
+        }
+        else if ('${status}' == 3){
+            document.getElementById("tracker").style.display = "none";
+            document.getElementById("manage_frame").style.display = "";
+        }
+    }
+
+    function showHome() {
+        document.getElementById("tracker").style.display = "";
+        document.getElementById("manage_frame").style.display = "none";
+    }
+
+    function confirmBuy() {
+        document.getElementById("tickets").style.display = "none";
+        document.getElementById("buyConfirm").style.display = "";
+    }
+
+    function showTickets() {
+        document.getElementById("tickets").style.display = "";
+        document.getElementById("buyConfirm").style.display = "none";
     }
 </script>
 </html>
