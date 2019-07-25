@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TicketMapperTest {
@@ -35,5 +37,14 @@ public class TicketMapperTest {
         int result = mapper.insert(ticket);
         System.out.println(result);
         assert (result == 1);
+    }
+
+    @Test
+    public void selectTicketsByUserId() {
+        int id = 21;
+        ArrayList<Ticket> list = mapper.selectTicketsByUserId(id);
+        for (Ticket t : list){
+            System.out.println(t.getFlightid());
+        }
     }
 }

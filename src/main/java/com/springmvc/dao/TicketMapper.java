@@ -3,6 +3,8 @@ package com.springmvc.dao;
 import com.springmvc.entity.Ticket;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
 public interface TicketMapper {
     int deleteByPrimaryKey(Integer ticketid);
@@ -12,6 +14,8 @@ public interface TicketMapper {
     int insertSelective(Ticket record);
 
     Ticket selectByPrimaryKey(Integer ticketid);
+
+    ArrayList<Ticket> selectTicketsByUserId(Integer record);
 
     int updateByPrimaryKeySelective(Ticket record);
 

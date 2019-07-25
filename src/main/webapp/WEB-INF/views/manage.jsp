@@ -89,17 +89,17 @@
         <table class="table" id="allFlights" align="center" valign="center">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" align="center" valign="center">ID</th>
-                <th scope="col" align="center" valign="center">Flight number</th>
-                <th scope="col" align="center" valign="center">Departure time</th>
-                <th scope="col" align="center" valign="center">Arrival time</th>
-                <th scope="col" align="center" valign="center">Departure airport</th>
-                <th scope="col" align="center" valign="center">Arrival airport</th>
-                <th scope="col" align="center" valign="center">Seat number</th>
-                <th scope="col" align="center" valign="center">Available seat number</th>
-                <th scope="col" align="center" valign="center">Price</th>
-                <th scope="col" align="center" valign="center">Status</th>
-                <th scope="col" align="center" valign="center">Actions</th>
+                <th scope="col">ID</th>
+                <th scope="col">Flight number</th>
+                <th scope="col">Departure time</th>
+                <th scope="col">Arrival time</th>
+                <th scope="col">Departure airport</th>
+                <th scope="col">Arrival airport</th>
+                <th scope="col">Seat number</th>
+                <th scope="col">Available seat number</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -232,6 +232,9 @@
         }
         else if ('${status}' == 9){
             alert("Simulation is over");
+        }
+        else if('${status}' == 10){
+            alert("Simulation Paused")
         }
     }
 

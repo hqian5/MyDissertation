@@ -32,7 +32,8 @@
     <div id="login_frame">
 
         <h2>Simulating flights</h2><br>
-        <input type="button" value="Flights Home" onclick="location.href='/manage/flights'" class="btn-blue"><br><br>
+        <input type="button" value="Flights Home" onclick="location.href='/manage/flights'" class="btn-blue">
+        <input type="button" value="Pause simulation" onclick="location.href='/stop/simulation'" class="btn-blue"><br><br>
         <form id="simulating" name="simulating" action="/simulating/flights" method="post">
             Simulating current time: <input type="time" id="simulationTime" name="simulationTime"
                                             class="text_field" value="${time}" readonly><br><br>
@@ -43,16 +44,16 @@
         <table class="table" id="nowFlights" align="center" valign="center">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" align="center" valign="center">ID</th>
-                <th scope="col" align="center" valign="center">Flight number</th>
-                <th scope="col" align="center" valign="center">Departure time</th>
-                <th scope="col" align="center" valign="center">Arrival time</th>
-                <th scope="col" align="center" valign="center">Departure airport</th>
-                <th scope="col" align="center" valign="center">Arrival airport</th>
-                <th scope="col" align="center" valign="center">Seat number</th>
-                <th scope="col" align="center" valign="center">Available seat number</th>
-                <th scope="col" align="center" valign="center">Price</th>
-                <th scope="col" align="center" valign="center">Status</th>
+                <th scope="col">ID</th>
+                <th scope="col">Flight number</th>
+                <th scope="col">Departure time</th>
+                <th scope="col">Arrival time</th>
+                <th scope="col">Departure airport</th>
+                <th scope="col">Arrival airport</th>
+                <th scope="col">Seat number</th>
+                <th scope="col">Available seat number</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
