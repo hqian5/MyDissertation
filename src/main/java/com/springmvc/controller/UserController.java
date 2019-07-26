@@ -3,7 +3,6 @@ package com.springmvc.controller;
 import com.springmvc.entity.Client;
 import com.springmvc.entity.Flight;
 import com.springmvc.entity.Ticket;
-import com.springmvc.entity.Transaction;
 import com.springmvc.service.inter.ClientService;
 import com.springmvc.service.inter.FlightService;
 import com.springmvc.service.inter.TicketService;
@@ -312,6 +311,51 @@ public class UserController {
         else {
             model.addAttribute("status", 3);
             model.addAttribute("user", client);
+            model.addAllAttributes(trips);
+        }
+        return "usermanage";
+    }
+
+    @RequestMapping(value = "/buy/options", method = RequestMethod.GET)
+    public String buyOptions(){
+        return "usermanage";
+    }
+
+    @RequestMapping(value = "/buy/options", method = RequestMethod.POST)
+    public String optionValidate(@RequestParam("userId") int userId, @RequestParam("confirmId") int flightId,
+                                 Model model, HttpSession session){
+        Client client = (Client) session.getAttribute("userhome");
+        Ticket ticket = new Ticket();
+        ticket.setUserid(userId);
+        ticket.setFlightid(flightId);
+        ArrayList<Ticket> check = new ArrayList<Ticket>();
+        ArrayList<Flight> list = new ArrayList<Flight>();
+        Map<String, ArrayList<Flight>> trips = new HashMap<String, ArrayList<Flight>>();
+        if (ticketService.insert(ticket) == 1){
+            model.addAttribute("status", 4);
+            session.setAttribute("buyOptions", ticket);
+            model.addAttribute("user", client);
+            check = ticketService.selectTicketsByUserId(userId);
+            if (check.size() != 0){
+                for (Ticket t : check){
+                    Flight flight = flightService.selectByPrimaryKey(t.getFlightid());
+                    list.add(flight);
+                }
+            }
+            trips.put("trips", list);
+            model.addAllAttributes(trips);
+        }
+        else {
+            model.addAttribute("status", 5);
+            model.addAttribute("user", client);
+            check = ticketService.selectTicketsByUserId(userId);
+            if (check.size() != 0){
+                for (Ticket t : check){
+                    Flight flight = flightService.selectByPrimaryKey(t.getFlightid());
+                    list.add(flight);
+                }
+            }
+            trips.put("trips", list);
             model.addAllAttributes(trips);
         }
         return "usermanage";

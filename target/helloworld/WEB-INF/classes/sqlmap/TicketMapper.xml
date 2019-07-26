@@ -21,6 +21,12 @@
     from ticket
     where userid = #{userid,jdbcType=INTEGER}
   </select>
+  <select id="selectByFlightId" parameterType="java.lang.Integer" resultType="java.util.ArrayList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from ticket
+    where flightid = #{flightid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from ticket
     where ticketid = #{ticketid,jdbcType=INTEGER}

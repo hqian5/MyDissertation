@@ -47,4 +47,10 @@ public class TicketMapperTest {
             System.out.println(t.getFlightid());
         }
     }
+
+    @Test
+    public void selectByFlightId() {
+        ArrayList<Ticket> ticket = mapper.selectByFlightId(463);
+        System.out.println(ticket.size());
+    }
 }

@@ -25,4 +25,8 @@ public class TicketServiceImpl implements TicketService {
     public ArrayList<Ticket> selectTicketsByUserId(Integer record) {
         return mapper.selectTicketsByUserId(record);
     }
+
+    public ArrayList<Ticket> selectByFlightId(int record) {
+        return mapper.selectByFlightId(record);
+    }
 }

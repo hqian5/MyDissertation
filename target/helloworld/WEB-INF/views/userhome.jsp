@@ -77,7 +77,7 @@
                 <h2>Manage your trips</h2>
                 <form id="userManage" action="/user/manage" method="post">
                     <input type="number" id="manageId" name="manageId" value="${user.userid}" style="display: none">
-                    <input type="submit" value="My trips" class="btn-blue">
+                    <input type="submit" value="My trips" class="btn-blue"><br><br>
                     <input type="button" value="log out" onclick="location.href='/user/logout'" class="btn-blue">
                 </form>
                 <br><br>
@@ -199,12 +199,10 @@
     }
 
     function confirmBuy() {
-        document.getElementById("tickets").style.display = "none";
         document.getElementById("buyConfirm").style.display = "";
     }
 
     function showTickets() {
-        document.getElementById("tickets").style.display = "";
         document.getElementById("buyConfirm").style.display = "none";
     }
 </script>

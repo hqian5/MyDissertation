@@ -33,9 +33,9 @@
 
         <h2>Simulating flights</h2><br>
         <input type="button" value="Flights Home" onclick="location.href='/manage/flights'" class="btn-blue">
-        <input type="button" value="Pause simulation" onclick="location.href='/stop/simulation'" class="btn-blue"><br><br>
+        <input type="button" value="Stop simulation" onclick="location.href='/stop/simulation'" class="btn-blue"><br><br>
         <form id="simulating" name="simulating" action="/simulating/flights" method="post">
-            Simulating current time: <input type="time" id="simulationTime" name="simulationTime"
+            Simulating current time: <input type="datetime-local" id="simulationTime" name="simulationTime"
                                             class="text_field" value="${time}" readonly><br><br>
             Simulating airport: <input type="text" id="simulationAirport" name="simulationAirport"
                                        value="${airport}" class="text_field" readonly><br><br>
@@ -87,6 +87,6 @@
         }
     }
 
-    setTimeout("simulating.submit();", 3000);
+    setTimeout("simulating.submit();", 1000);
 </script>
 </html>

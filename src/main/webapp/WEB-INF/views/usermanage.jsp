@@ -147,6 +147,12 @@
         else if ('${status}' == 3){
             alert("Sorry, there are no optional tickets");
         }
+        else if ('${status}' == 4){
+            alert("You have successfully bought an optional ticket");
+        }
+        else if ('${status}' == 5){
+            alert("You failed to buy an optional ticket");
+        }
     }
     
     function optionalFlights() {

@@ -23,4 +23,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public ArrayList<Client> selectByUsername(Client record) { return mapper.selectByUsername(record); }
+
+    public Client selectByPrimaryKey(Integer userid) {
+        return mapper.selectByPrimaryKey(userid);
+    }
 }

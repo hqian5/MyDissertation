@@ -11,4 +11,6 @@ public interface ClientService {
     ArrayList<Client> selectSelective(Client record);
 
     ArrayList<Client> selectByUsername(Client record);
+
+    Client selectByPrimaryKey(Integer userid);
 }

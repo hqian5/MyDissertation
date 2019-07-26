@@ -1,13 +1,18 @@
 package com.springmvc.controller;
 
 import com.springmvc.entity.Admin;
+import com.springmvc.entity.Client;
 import com.springmvc.entity.Flight;
+import com.springmvc.entity.Ticket;
 import com.springmvc.service.inter.AdminService;
+import com.springmvc.service.inter.ClientService;
 import com.springmvc.service.inter.FlightService;
+import com.springmvc.service.inter.TicketService;
+import com.springmvc.util.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +29,15 @@ public class AdminController {
 
     @Autowired
     private FlightService flightService;
+
+    @Autowired
+    private TicketService ticketService;
+
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String adminLogin(){
@@ -129,7 +143,6 @@ public class AdminController {
                 model.addAttribute("status", 2);
             }
         }
-        System.out.println("input: " + model);
         return "adminhome";
     }
 
@@ -324,9 +337,6 @@ public class AdminController {
                 ids[i] = idStart++;
             }
             for (int i : ids){
-                System.out.println(i);
-            }
-            for (int i : ids){
                 Flight check = flightService.selectByPrimaryKey(i);
                 if (check != null){
                     flightService.deleteByPrimaryKey(i);
@@ -461,6 +471,7 @@ public class AdminController {
     public String selectValidate(@RequestParam("select_departure") String departure,
                                  Model model, HttpSession session){
         ArrayList<Flight> list = flightService.selectByDepartureAirport(departure);
+        ArrayList<Flight> check = new ArrayList<Flight>();
         Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
         if (list.size() == 0){
             model.addAttribute("status", 0);
@@ -468,11 +479,32 @@ public class AdminController {
         else {
             for (Flight f : list){
                 setOffset(f);
+                check.add(f);
                 flightService.updateByPrimaryKeySelective(f);
             }
+            for (Flight f : check){
+                if (f.getFlightStatus().equals("On time")){
+                    continue;
+                }
+                else {
+                    ArrayList<Ticket> send = ticketService.selectByFlightId(f.getFlightid());
+                    String flightNumber = f.getFlightNumber();
+                    String departureTime = f.getDepartureAirport();
+                    String arrivalTime = f.getArrivalAirport();
+                    String flightStatus = f.getFlightStatus();
+                    for (Ticket t : send){
+                        Client client = clientService.selectByPrimaryKey(t.getUserid());
+                        String address = client.getEmail();
+                        String username = client.getUsername();
+                        EmailSender emailSender = new EmailSender(address, username, flightNumber, departureTime, arrivalTime, flightStatus, mailSender);
+                        emailSender.sendEmail();
+                    }
+                }
+            }
+            String date = check.get(0).getDepartureTime().substring(0, 11);
             session.setAttribute("simulation", list);
             model.addAttribute("status", 1);
-            model.addAttribute("time", "00:00");
+            model.addAttribute("time", date + "00:00");
             model.addAttribute("airport", list.get(0).getDepartureAirport());
             map.put("simulationFlights", list);
             model.addAllAttributes(map);
@@ -511,30 +543,34 @@ public class AdminController {
     public String test(Model model, HttpSession session, @RequestParam("simulationTime") String time,
                        @RequestParam("simulationAirport") String airport) throws ParseException {
 
-        DateFormat format = new SimpleDateFormat("HH:mm");
+        ArrayList<Flight> check = flightService.selectByDepartureAirport(airport);
+        Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date timeNow = format.parse(time);
+        Date timeNow = format1.parse(time);
         Date timeNext = new Date();
         timeNext.setTime(timeNow.getTime() + 30*60*1000);
-        String end = "00:00";
+        String date = check.get(0).getDepartureTime().substring(0,10);
+        Date date1 = format.parse(date);
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date1);
+        calendar.add(calendar.DATE, 1);
+        date1 = calendar.getTime();
+        String end = format.format(date1) + "T06:00";
         model.addAttribute("airport", airport);
-        model.addAttribute("time", format.format(timeNext));
+        model.addAttribute("time", format1.format(timeNext));
 
-        if (format.format(timeNext).equals(end)){
+        if (format1.format(timeNext).equals(end)){
             showSimulatedFlights(model, airport);
             model.addAttribute("status", 9);
             return "manage";
         }
         else {
-            ArrayList<Flight> check = flightService.selectByDepartureAirport(airport);
-            Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
 
             if (check.size() != 0){
                 for (Flight f : check){
                     if (f.getFlightStatus().equals("On time")){
-                        Date middle1 = format1.parse(f.getDepartureTime());
-                        String middle2 = format.format(middle1);
-                        Date departure = format.parse(middle2);
+                        Date departure = format1.parse(f.getDepartureTime());
                         if (departure.getTime() - timeNext.getTime() <= 0){
                             f.setFlightStatus("Already taken off");
                         }
@@ -546,9 +582,7 @@ public class AdminController {
                     else {
                         String origin = f.getFlightStatus();
                         String altered = origin.substring(11);
-                        Date middle1 = format1.parse(altered);
-                        String middle2 = format.format(middle1);
-                        Date departure = format.parse(middle2);
+                        Date departure = format1.parse(altered);
                         if (departure.getTime() - timeNext.getTime() <= 0){
                             f.setFlightStatus("Already taken off");
                         }

@@ -20,4 +20,6 @@ public interface TicketMapper {
     int updateByPrimaryKeySelective(Ticket record);
 
     int updateByPrimaryKey(Ticket record);
+
+    ArrayList<Ticket> selectByFlightId(int record);
 }

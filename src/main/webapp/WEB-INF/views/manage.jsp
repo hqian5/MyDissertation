@@ -234,7 +234,7 @@
             alert("Simulation is over");
         }
         else if('${status}' == 10){
-            alert("Simulation Paused")
+            alert("Simulation stopped");
         }
     }
 

@@ -239,6 +239,14 @@
       <version>2.4</version>
     </dependency>
     <!-- log end -->
+
+    <!-- 发送邮件 -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>helloworld</finalName>

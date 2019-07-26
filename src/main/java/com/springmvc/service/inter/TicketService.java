@@ -10,4 +10,6 @@ public interface TicketService {
     Ticket selectByPrimaryKey(Integer ticketid);
 
     ArrayList<Ticket> selectTicketsByUserId(Integer record);
+
+    ArrayList<Ticket> selectByFlightId(int record);
 }
