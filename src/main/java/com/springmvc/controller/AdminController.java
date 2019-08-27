@@ -301,6 +301,11 @@ public class AdminController {
                 flight.setSeatFree(generateSeatFree(flight.getSeatNumber()));
                 flight.setPrice(generatePrice());
                 flight.setFlightStatus("On time");
+                flight.setDuration(generateDuration(flight.getDepartureTime(), flight.getArrivalTime()));
+                flight.setDirection(generateDirection(flight.getDepartureAirport(), flight.getArrivalAirport()));
+                flight.setVelocity(generateVelocity(flight));
+                flight.setLat(generateLat(flight.getDepartureAirport()));
+                flight.setLng(generateLng(flight.getDepartureAirport()));
                 flights[i] = flight;
             }
 
@@ -429,6 +434,296 @@ public class AdminController {
         return price;
     }
 
+    public int generateDuration(String start, String end){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        int duration = 0;
+        try {
+            long startTime = dateFormat.parse(start).getTime();
+            long endTime = dateFormat.parse(end).getTime();
+            duration = (int)((endTime - startTime)/(1000*60));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return duration;
+    }
+
+    public double generateDirection(String departure, String arrival){
+        double lat_a = 0, lng_a = 0, lat_b = 0, lng_b = 0;
+        switch (departure)
+        {
+            case "London":
+                lat_a = 51.5074;
+                lng_a = 0.1278;
+                break;
+            case "Paris":
+                lat_a = 48.8566;
+                lng_a = 2.3522;
+                break;
+            case "Berlin":
+                lat_a = 52.5200;
+                lng_a = 13.4050;
+                break;
+            case "Amsterdam":
+                lat_a = 52.3667;
+                lng_a = 4.8945;
+                break;
+            case "Helsinki":
+                lat_a = 60.1699;
+                lng_a = 24.9384;
+                break;
+            case "Frankfurt":
+                lat_a = 50.1109;
+                lng_a = 8.6821;
+                break;
+            case "Istanbul":
+                lat_a = 41.0082;
+                lng_a = 28.9784;
+                break;
+            case "Munich":
+                lat_a = 48.1351;
+                lng_a = 11.5820;
+                break;
+            case "Rome":
+                lat_a = 41.9028;
+                lng_a = 12.4964;
+                break;
+            case "Moscow":
+                lat_a = 55.7558;
+                lng_a = 37.6173;
+                break;
+            default:
+                System.out.println("default");
+        }
+
+        switch (arrival)
+        {
+            case "London":
+                lat_b = 51.5074;
+                lng_b = 0.1278;
+                break;
+            case "Paris":
+                lat_b = 48.8566;
+                lng_b = 2.3522;
+                break;
+            case "Berlin":
+                lat_b = 52.5200;
+                lng_b = 13.4050;
+                break;
+            case "Amsterdam":
+                lat_b = 52.3667;
+                lng_b = 4.8945;
+                break;
+            case "Helsinki":
+                lat_b = 60.1699;
+                lng_b = 24.9384;
+                break;
+            case "Frankfurt":
+                lat_b = 50.1109;
+                lng_b = 8.6821;
+                break;
+            case "Istanbul":
+                lat_b = 41.0082;
+                lng_b = 28.9784;
+                break;
+            case "Munich":
+                lat_b = 48.1351;
+                lng_b = 11.5820;
+                break;
+            case "Rome":
+                lat_b = 41.9028;
+                lng_b = 12.4964;
+                break;
+            case "Moscow":
+                lat_b = 55.7558;
+                lng_b = 37.6173;
+                break;
+            default:
+                System.out.println("default");
+        }
+        double angel = getAngle1(lat_a, lng_a, lat_b, lng_b);
+        return angel;
+    }
+
+    public double generateVelocity(Flight flight){
+        double lat_a = 0, lng_a = 0, lat_b = 0, lng_b = 0;
+        switch (flight.getDepartureAirport())
+        {
+            case "London":
+                lat_a = 51.5074;
+                lng_a = 0.1278;
+                break;
+            case "Paris":
+                lat_a = 48.8566;
+                lng_a = 2.3522;
+                break;
+            case "Berlin":
+                lat_a = 52.5200;
+                lng_a = 13.4050;
+                break;
+            case "Amsterdam":
+                lat_a = 52.3667;
+                lng_a = 4.8945;
+                break;
+            case "Helsinki":
+                lat_a = 60.1699;
+                lng_a = 24.9384;
+                break;
+            case "Frankfurt":
+                lat_a = 50.1109;
+                lng_a = 8.6821;
+                break;
+            case "Istanbul":
+                lat_a = 41.0082;
+                lng_a = 28.9784;
+                break;
+            case "Munich":
+                lat_a = 48.1351;
+                lng_a = 11.5820;
+                break;
+            case "Rome":
+                lat_a = 41.9028;
+                lng_a = 12.4964;
+                break;
+            case "Moscow":
+                lat_a = 55.7558;
+                lng_a = 37.6173;
+                break;
+            default:
+                System.out.println("default");
+        }
+
+        switch (flight.getArrivalAirport())
+        {
+            case "London":
+                lat_b = 51.5074;
+                lng_b = 0.1278;
+                break;
+            case "Paris":
+                lat_b = 48.8566;
+                lng_b = 2.3522;
+                break;
+            case "Berlin":
+                lat_b = 52.5200;
+                lng_b = 13.4050;
+                break;
+            case "Amsterdam":
+                lat_b = 52.3667;
+                lng_b = 4.8945;
+                break;
+            case "Helsinki":
+                lat_b = 60.1699;
+                lng_b = 24.9384;
+                break;
+            case "Frankfurt":
+                lat_b = 50.1109;
+                lng_b = 8.6821;
+                break;
+            case "Istanbul":
+                lat_b = 41.0082;
+                lng_b = 28.9784;
+                break;
+            case "Munich":
+                lat_b = 48.1351;
+                lng_b = 11.5820;
+                break;
+            case "Rome":
+                lat_b = 41.9028;
+                lng_b = 12.4964;
+                break;
+            case "Moscow":
+                lat_b = 55.7558;
+                lng_b = 37.6173;
+                break;
+            default:
+                System.out.println("default");
+        }
+        double distance = getDistance(lat_a, lng_a, lat_b, lng_b);
+        int duration = flight.getDuration();
+        double velocity = distance/duration;
+        return velocity;
+    }
+
+    public double generateLat(String departure){
+        double lat_a = 0;
+        switch (departure)
+        {
+            case "London":
+                lat_a = 51.5074;
+                break;
+            case "Paris":
+                lat_a = 48.8566;
+                break;
+            case "Berlin":
+                lat_a = 52.5200;
+                break;
+            case "Amsterdam":
+                lat_a = 52.3667;
+                break;
+            case "Helsinki":
+                lat_a = 60.1699;
+                break;
+            case "Frankfurt":
+                lat_a = 50.1109;
+                break;
+            case "Istanbul":
+                lat_a = 41.0082;
+                break;
+            case "Munich":
+                lat_a = 48.1351;
+                break;
+            case "Rome":
+                lat_a = 41.9028;
+                break;
+            case "Moscow":
+                lat_a = 55.7558;
+                break;
+            default:
+                System.out.println("default");
+        }
+        return lat_a;
+    }
+
+    public double generateLng(String departure){
+        double lng_a = 0;
+        switch (departure)
+        {
+            case "London":
+                lng_a = 0.1278;
+                break;
+            case "Paris":
+                lng_a = 2.3522;
+                break;
+            case "Berlin":
+                lng_a = 13.4050;
+                break;
+            case "Amsterdam":
+                lng_a = 4.8945;
+                break;
+            case "Helsinki":
+                lng_a = 24.9384;
+                break;
+            case "Frankfurt":
+                lng_a = 8.6821;
+                break;
+            case "Istanbul":
+                lng_a = 28.9784;
+                break;
+            case "Munich":
+                lng_a = 11.5820;
+                break;
+            case "Rome":
+                lng_a = 12.4964;
+                break;
+            case "Moscow":
+                lng_a = 37.6173;
+                break;
+            default:
+                System.out.println("default");
+        }
+        return lng_a;
+    }
+
     private String check(int num){
         String number = num + "";
         if (number.length() == 1){
@@ -457,6 +752,177 @@ public class AdminController {
         return arrNew;
     }
 
+    private double getAngle1(double lat1, double lon1, double lat2, double lon2) {
+        double result = 0.0;
+
+        int ilat1 = (int) (0.50 + lat1 * 360000.0);
+        int ilat2 = (int) (0.50 + lat2 * 360000.0);
+        int ilon1 = (int) (0.50 + lon1 * 360000.0);
+        int ilon2 = (int) (0.50 + lon2 * 360000.0);
+
+        lat1 = Math.toRadians(lat1);
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+
+        if ((ilat1 == ilat2) && (ilon1 == ilon2)) {
+            return result;
+        } else if (ilon1 == ilon2) {
+            if (ilat1 > ilat2)
+                result = 180.0;
+        } else {
+            double c = Math
+                    .acos(Math.sin(lat2) * Math.sin(lat1) + Math.cos(lat2)
+                            * Math.cos(lat1) * Math.cos((lon2 - lon1)));
+            double A = Math.asin(Math.cos(lat2) * Math.sin((lon2 - lon1))
+                    / Math.sin(c));
+            result = Math.toDegrees(A);
+            if ((ilat2 > ilat1) && (ilon2 > ilon1)) {
+            } else if ((ilat2 < ilat1) && (ilon2 < ilon1)) {
+                result = 180.0 - result;
+            } else if ((ilat2 < ilat1) && (ilon2 > ilon1)) {
+                result = 180.0 - result;
+            } else if ((ilat2 > ilat1) && (ilon2 < ilon1)) {
+                result += 360.0;
+            }
+        }
+        return result;
+    }
+
+    private static double EARTH_RADIUS = 6378.137;
+
+    private static double rad(double d) {
+        return d * Math.PI / 180.0;
+    }
+
+    private double deg(double x) {
+        return x * 180 / Math.PI;
+    }
+
+    private double a = 6378137;
+
+    private double b = 6356752.3142;
+
+    private double f = 1 / 298.2572236;
+
+    private double getDistance(double lat1, double lng1, double lat2, double lng2) {
+
+        double radLat1 = rad(lat1);
+        double radLat2 = rad(lat2);
+        double a = radLat1 - radLat2;
+        double b = rad(lng1) - rad(lng2);
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
+                + Math.cos(radLat1) * Math.cos(radLat2)
+                * Math.pow(Math.sin(b / 2), 2)));
+        s = s * EARTH_RADIUS;
+        s = Math.round(s * 10000d) / 10000d;
+        s = s*1000;
+        return s;
+    }
+
+    private String computeLatLng(double lon, double lat, double brng, double dist) {
+
+        double alpha1 = rad(brng);
+        double sinAlpha1 = Math.sin(alpha1);
+        double cosAlpha1 = Math.cos(alpha1);
+
+        double tanU1 = (1 - f) * Math.tan(rad(lat));
+        double cosU1 = 1 / Math.sqrt((1 + tanU1 * tanU1));
+        double sinU1 = tanU1 * cosU1;
+        double sigma1 = Math.atan2(tanU1, cosAlpha1);
+        double sinAlpha = cosU1 * sinAlpha1;
+        double cosSqAlpha = 1 - sinAlpha * sinAlpha;
+        double uSq = cosSqAlpha * (a * a - b * b) / (b * b);
+        double A = 1 + uSq / 16384 * (4096 + uSq * (-768 + uSq * (320 - 175 * uSq)));
+        double B = uSq / 1024 * (256 + uSq * (-128 + uSq * (74 - 47 * uSq)));
+
+        double cos2SigmaM=0;
+        double sinSigma=0;
+        double cosSigma=0;
+        double sigma = dist / (b * A), sigmaP = 2 * Math.PI;
+        while (Math.abs(sigma - sigmaP) > 1e-12) {
+            cos2SigmaM = Math.cos(2 * sigma1 + sigma);
+            sinSigma = Math.sin(sigma);
+            cosSigma = Math.cos(sigma);
+            double deltaSigma = B * sinSigma * (cos2SigmaM + B / 4 * (cosSigma * (-1 + 2 * cos2SigmaM * cos2SigmaM)
+                    - B / 6 * cos2SigmaM * (-3 + 4 * sinSigma * sinSigma) * (-3 + 4 * cos2SigmaM * cos2SigmaM)));
+            sigmaP = sigma;
+            sigma = dist / (b * A) + deltaSigma;
+        }
+
+        double tmp = sinU1 * sinSigma - cosU1 * cosSigma * cosAlpha1;
+        double lat2 = Math.atan2(sinU1 * cosSigma + cosU1 * sinSigma * cosAlpha1,
+                (1 - f) * Math.sqrt(sinAlpha * sinAlpha + tmp * tmp));
+        double lambda = Math.atan2(sinSigma * sinAlpha1, cosU1 * cosSigma - sinU1 * sinSigma * cosAlpha1);
+        double C = f / 16 * cosSqAlpha * (4 + f * (4 - 3 * cosSqAlpha));
+        double L = lambda - (1 - C) * f * sinAlpha
+                * (sigma + C * sinSigma * (cos2SigmaM + C * cosSigma * (-1 + 2 * cos2SigmaM * cos2SigmaM)));
+
+        double revAz = Math.atan2(sinAlpha, -tmp); // final bearing
+
+        return lon+deg(L)+","+deg(lat2);
+    }
+
+    private String computeNewPosition(Flight flight, Date current){
+        double velocity;
+        double direction = 0;
+        double period;
+        double distance = 0;
+        double lat = 0;
+        double lng = 0;
+        Date departure;
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        if (flight.getNewDepartureTime().equals("")){
+            String from1 = flight.getDepartureTime();
+            try {
+                departure = format.parse(from1);
+                period = (current.getTime() - departure.getTime())/(1000*60);
+                velocity = flight.getVelocity();
+                distance = velocity * period;
+//                System.out.println(period + ", " + velocity + ", " + distance);
+                lat = flight.getLat();
+                lng = flight.getLng();
+//                System.out.println("lat: " + lat + ", lng: " + lng);
+                direction = flight.getDirection();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            String from2 = flight.getNewDepartureTime();
+            try {
+                departure = format.parse(from2);
+                period = (current.getTime() - departure.getTime())/(1000*60);
+                velocity = flight.getVelocity();
+                distance = velocity * period;
+//                System.out.println(period + ", " + velocity + ", " + distance);
+                lat = flight.getLat();
+                lng = flight.getLng();
+//                System.out.println("lat: " + lat + ", lng: " + lng);
+                direction = flight.getDirection();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        String position = computeLatLng(lng, lat, direction, distance);
+//        System.out.println(position);
+        return position;
+    }
+
+    private String computeNewPositionFlying(Flight flight, Date current, Date previous){
+        double period = (current.getTime() - previous.getTime())/(1000*60);
+        double velocity = flight.getVelocity();
+        double distance = velocity * period;
+//        System.out.println(period + ", " + velocity + ", " + distance);
+        double lat = flight.getLat();
+        double lng = flight.getLng();
+//                System.out.println("lat: " + lat + ", lng: " + lng);
+        double direction = flight.getDirection();
+        String position = computeLatLng(lng, lat, direction, distance);
+//        System.out.println(position);
+        return position;
+    }
+
     @RequestMapping(value = "/flights/simulation", method = RequestMethod.GET)
     public String goSimulation(){
         return "simulation";
@@ -479,8 +945,8 @@ public class AdminController {
         else {
             for (Flight f : list){
                 setOffset(f);
-                check.add(f);
                 flightService.updateByPrimaryKeySelective(f);
+                check.add(f);
             }
             for (Flight f : check){
                 if (f.getFlightStatus().equals("On time")){
@@ -513,25 +979,37 @@ public class AdminController {
     }
 
     public void setOffset(Flight flight){
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-        Date departureNew = new Date();
-        Random random = new Random();
-
-        String departTime = flight.getDepartureTime();
-        int offset = (random.nextInt(340)+20) *60 * 1000;
-
         try {
-            Date departure = format.parse(departTime);
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date departureNew = new Date();
+            Random random = new Random();
+
+            int offset = (random.nextInt(340)+20) *60 * 1000;
+            Date departure = format.parse(flight.getDepartureTime());
             departureNew.setTime(departure.getTime() + offset);
+
             if (departureNew.getTime() - departure.getTime() <= 7200000){
                 flight.setFlightStatus("On time");
+                flight.setNewDepartureTime(format.format(departure));
+                flight.setNewArrivalTime("");
             }
             else if (departureNew.getTime() - departure.getTime() > 7200000
             && departureNew.getTime() - departure.getTime() <= 18000000){
+
+                long duration = flight.getDuration();
+                Date arrivalNew = new Date();
+                arrivalNew.setTime(departureNew.getTime() + duration*60*1000);
                 flight.setFlightStatus("Delayed to " + format.format(departureNew));
+                flight.setNewDepartureTime(format.format(departureNew));
+                flight.setNewArrivalTime(format.format(arrivalNew));
+
             }
             else {
+                Date cancel = new Date();
+                cancel.setTime(departureNew.getTime() + 2880*1000*60);
                 flight.setFlightStatus("Cancelled");
+                flight.setNewDepartureTime(format.format(cancel));
+                flight.setNewArrivalTime("");
             }
 
         } catch (ParseException e) {
@@ -556,7 +1034,7 @@ public class AdminController {
         calendar.setTime(date1);
         calendar.add(calendar.DATE, 1);
         date1 = calendar.getTime();
-        String end = format.format(date1) + "T06:00";
+        String end = format.format(date1) + "T12:00";
         model.addAttribute("airport", airport);
         model.addAttribute("time", format1.format(timeNext));
 
@@ -572,22 +1050,75 @@ public class AdminController {
                     if (f.getFlightStatus().equals("On time")){
                         Date departure = format1.parse(f.getDepartureTime());
                         if (departure.getTime() - timeNext.getTime() <= 0){
-                            f.setFlightStatus("Already taken off");
+                            f.setFlightStatus("flying");
+                            String position = computeNewPosition(f, timeNext);
+                            String[] positions = position.split(",");
+                            double lat = Double.parseDouble(positions[1]);
+                            double lng = Double.parseDouble(positions[0]);
+                            f.setLat(lat);
+                            f.setLng(lng);
+//                            System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
                         }
                     }
-                    else if (f.getFlightStatus().equals("Cancelled")
-                    || f.getFlightStatus().equals("Already taken off")){
+                    else if (f.getFlightStatus().equals("Cancelled")){
                         f.setFlightStatus(f.getFlightStatus());
                     }
-                    else {
-                        String origin = f.getFlightStatus();
-                        String altered = origin.substring(11);
-                        Date departure = format1.parse(altered);
-                        if (departure.getTime() - timeNext.getTime() <= 0){
-                            f.setFlightStatus("Already taken off");
+                    else if (f.getFlightStatus().equals("flying")){
+                        if (f.getNewArrivalTime().equals("")){
+                            Date arrival = format1.parse(f.getArrivalTime());
+                            if (arrival.getTime() - timeNext.getTime() <= 0){
+                                f.setFlightStatus("Arrived");
+                                double lat = generateLat(f.getArrivalAirport());
+                                double lng = generateLng(f.getArrivalAirport());
+                                f.setLat(lat);
+                                f.setLng(lng);
+                            }
+                            else {
+                                String position = computeNewPositionFlying(f, timeNext, timeNow);
+                                String[] positions = position.split(",");
+                                double lat = Double.parseDouble(positions[1]);
+                                double lng = Double.parseDouble(positions[0]);
+                                f.setLat(lat);
+                                f.setLng(lng);
+//                                System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                            }
+                        } else {
+                            Date arrival = format1.parse(f.getNewArrivalTime());
+                            if (arrival.getTime() - timeNext.getTime() <= 0){
+                                f.setFlightStatus("Arrived");
+                                double lat = generateLat(f.getArrivalAirport());
+                                double lng = generateLng(f.getArrivalAirport());
+                                f.setLat(lat);
+                                f.setLng(lng);
+                            }
+                            else {
+                                String position = computeNewPositionFlying(f, timeNext, timeNow);
+                                String[] positions = position.split(",");
+                                double lat = Double.parseDouble(positions[1]);
+                                double lng = Double.parseDouble(positions[0]);
+                                f.setLat(lat);
+                                f.setLng(lng);
+//                                System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                            }
                         }
                     }
-                    flightService.updateByPrimaryKeySelective(f);
+                    else if (f.getFlightStatus().equals("Arrived")){
+                        continue;
+                    }
+                    else {
+                        Date departure = format1.parse(f.getNewDepartureTime());
+                        if (departure.getTime() - timeNext.getTime() <= 0){
+                            f.setFlightStatus("flying");
+                            String position = computeNewPosition(f, timeNext);
+                            String[] positions = position.split(",");
+                            double lat = Double.parseDouble(positions[1]);
+                            double lng = Double.parseDouble(positions[0]);
+                            f.setLat(lat);
+                            f.setLng(lng);
+//                            System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                        }
+                    }
+                        flightService.updateByPrimaryKeySelective(f);
                 }
                 map.put("simulationFlights", check);
                 model.addAllAttributes(map);
@@ -609,7 +1140,7 @@ public class AdminController {
 
     @RequestMapping(value = "/stop/simulation", method = RequestMethod.GET)
     public String stopSimulation(Model model, HttpSession session){
-        ArrayList<Flight> list = (ArrayList<Flight>) session.getAttribute("simulation");
+        ArrayList<Flight> list = (ArrayList<Flight>) session.getAttribute("simulationOk");
         Map<String, ArrayList<Flight>> map = new HashMap<String, ArrayList<Flight>>();
         map.put("flights", list);
         model.addAllAttributes(map);

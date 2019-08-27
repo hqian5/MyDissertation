@@ -12,10 +12,18 @@
     <result column="seat_free" jdbcType="INTEGER" property="seatFree" />
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="flight_status" jdbcType="VARCHAR" property="flightStatus" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="direction" jdbcType="DOUBLE" property="direction" />
+    <result column="velocity" jdbcType="DOUBLE" property="velocity" />
+    <result column="new_departure_time" jdbcType="VARCHAR" property="newDepartureTime" />
+    <result column="new_arrival_time" jdbcType="VARCHAR" property="newArrivalTime" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="lng" jdbcType="DOUBLE" property="lng" />
   </resultMap>
   <sql id="Base_Column_List">
     flightid, flight_number, departure_time, arrival_time, departure_airport, arrival_airport, 
-    seat_number, seat_free, price, flight_status
+    seat_number, seat_free, price, flight_status, duration, direction, velocity, new_departure_time, 
+    new_arrival_time, lat, lng
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -45,16 +53,16 @@
     <include refid="Base_Column_List"/>
     from flight
     where departure_airport = #{departureAirport,jdbcType=VARCHAR}
-    order by str_to_date(departure_time, '%Y-%m-%dT%H:%i')
+    order by str_to_date(new_departure_time, '%Y-%m-%dT%H:%i')
   </select>
   <select id="selectByDateAndAirports" parameterType="com.springmvc.entity.Flight" resultMap="BaseResultMap" resultType="java.util.ArrayList">
     select
     <include refid="Base_Column_List"/>
     from flight
     where substring(departure_time, 1, 10) = #{departureTime,jdbcType=VARCHAR}
-     and departure_airport = #{departureAirport,jdbcType=VARCHAR}
-     and arrival_airport = #{arrivalAirport,jdbcType=VARCHAR}
-     order by str_to_date(departure_time, '%Y-%m-%dT%H:%i')
+    and departure_airport = #{departureAirport,jdbcType=VARCHAR}
+    and arrival_airport = #{arrivalAirport,jdbcType=VARCHAR}
+    order by str_to_date(departure_time, '%Y-%m-%dT%H:%i')
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from flight
@@ -64,11 +72,15 @@
     insert into flight (flightid, flight_number, departure_time, 
       arrival_time, departure_airport, arrival_airport, 
       seat_number, seat_free, price, 
-      flight_status)
+      flight_status, duration, direction, 
+      velocity, new_departure_time, new_arrival_time, 
+      lat, lng)
     values (#{flightid,jdbcType=INTEGER}, #{flightNumber,jdbcType=VARCHAR}, #{departureTime,jdbcType=VARCHAR}, 
       #{arrivalTime,jdbcType=VARCHAR}, #{departureAirport,jdbcType=VARCHAR}, #{arrivalAirport,jdbcType=VARCHAR}, 
       #{seatNumber,jdbcType=INTEGER}, #{seatFree,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
-      #{flightStatus,jdbcType=VARCHAR})
+      #{flightStatus,jdbcType=VARCHAR}, #{duration,jdbcType=INTEGER}, #{direction,jdbcType=DOUBLE}, 
+      #{velocity,jdbcType=DOUBLE}, #{newDepartureTime,jdbcType=VARCHAR}, #{newArrivalTime,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=DOUBLE}, #{lng,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.springmvc.entity.Flight">
     insert into flight
@@ -103,6 +115,27 @@
       <if test="flightStatus != null">
         flight_status,
       </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="direction != null">
+        direction,
+      </if>
+      <if test="velocity != null">
+        velocity,
+      </if>
+      <if test="newDepartureTime != null">
+        new_departure_time,
+      </if>
+      <if test="newArrivalTime != null">
+        new_arrival_time,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="flightid != null">
@@ -134,6 +167,27 @@
       </if>
       <if test="flightStatus != null">
         #{flightStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null">
+        #{direction,jdbcType=DOUBLE},
+      </if>
+      <if test="velocity != null">
+        #{velocity,jdbcType=DOUBLE},
+      </if>
+      <if test="newDepartureTime != null">
+        #{newDepartureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="newArrivalTime != null">
+        #{newArrivalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -167,6 +221,27 @@
       <if test="flightStatus != null">
         flight_status = #{flightStatus,jdbcType=VARCHAR},
       </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null">
+        direction = #{direction,jdbcType=DOUBLE},
+      </if>
+      <if test="velocity != null">
+        velocity = #{velocity,jdbcType=DOUBLE},
+      </if>
+      <if test="newDepartureTime != null">
+        new_departure_time = #{newDepartureTime,jdbcType=VARCHAR},
+      </if>
+      <if test="newArrivalTime != null">
+        new_arrival_time = #{newArrivalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lng != null">
+        lng = #{lng,jdbcType=DOUBLE},
+      </if>
     </set>
     where flightid = #{flightid,jdbcType=INTEGER}
   </update>
@@ -180,7 +255,14 @@
       seat_number = #{seatNumber,jdbcType=INTEGER},
       seat_free = #{seatFree,jdbcType=INTEGER},
       price = #{price,jdbcType=INTEGER},
-      flight_status = #{flightStatus,jdbcType=VARCHAR}
+      flight_status = #{flightStatus,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      direction = #{direction,jdbcType=DOUBLE},
+      velocity = #{velocity,jdbcType=DOUBLE},
+      new_departure_time = #{newDepartureTime,jdbcType=VARCHAR},
+      new_arrival_time = #{newArrivalTime,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=DOUBLE},
+      lng = #{lng,jdbcType=DOUBLE}
     where flightid = #{flightid,jdbcType=INTEGER}
   </update>
 </mapper>

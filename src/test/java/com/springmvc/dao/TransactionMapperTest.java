@@ -36,4 +36,5 @@ public class TransactionMapperTest {
         System.out.println(result);
         assert (result == 1);
     }
+
 }
