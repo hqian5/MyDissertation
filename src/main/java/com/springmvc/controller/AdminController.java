@@ -879,10 +879,8 @@ public class AdminController {
                 period = (current.getTime() - departure.getTime())/(1000*60);
                 velocity = flight.getVelocity();
                 distance = velocity * period;
-//                System.out.println(period + ", " + velocity + ", " + distance);
                 lat = flight.getLat();
                 lng = flight.getLng();
-//                System.out.println("lat: " + lat + ", lng: " + lng);
                 direction = flight.getDirection();
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -895,17 +893,14 @@ public class AdminController {
                 period = (current.getTime() - departure.getTime())/(1000*60);
                 velocity = flight.getVelocity();
                 distance = velocity * period;
-//                System.out.println(period + ", " + velocity + ", " + distance);
                 lat = flight.getLat();
                 lng = flight.getLng();
-//                System.out.println("lat: " + lat + ", lng: " + lng);
                 direction = flight.getDirection();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
         String position = computeLatLng(lng, lat, direction, distance);
-//        System.out.println(position);
         return position;
     }
 
@@ -913,13 +908,10 @@ public class AdminController {
         double period = (current.getTime() - previous.getTime())/(1000*60);
         double velocity = flight.getVelocity();
         double distance = velocity * period;
-//        System.out.println(period + ", " + velocity + ", " + distance);
         double lat = flight.getLat();
         double lng = flight.getLng();
-//                System.out.println("lat: " + lat + ", lng: " + lng);
         double direction = flight.getDirection();
         String position = computeLatLng(lng, lat, direction, distance);
-//        System.out.println(position);
         return position;
     }
 
@@ -1050,20 +1042,37 @@ public class AdminController {
                     if (f.getFlightStatus().equals("On time")){
                         Date departure = format1.parse(f.getDepartureTime());
                         if (departure.getTime() - timeNext.getTime() <= 0){
-                            f.setFlightStatus("flying");
                             String position = computeNewPosition(f, timeNext);
                             String[] positions = position.split(",");
                             double lat = Double.parseDouble(positions[1]);
                             double lng = Double.parseDouble(positions[0]);
                             f.setLat(lat);
                             f.setLng(lng);
-//                            System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                            Date arrival = format1.parse(f.getArrivalTime());
+                            int diff = (int) ((arrival.getTime() - timeNext.getTime())/(1000*60));
+                            String rest = Integer.toString(diff);
+                            f.setFlightStatus("flying, arrive in " + rest + " minutes");
                         }
                     }
                     else if (f.getFlightStatus().equals("Cancelled")){
                         f.setFlightStatus(f.getFlightStatus());
                     }
-                    else if (f.getFlightStatus().equals("flying")){
+                    else if (f.getFlightStatus().substring(0, 7).equals("Delayed")){
+                        Date departure = format1.parse(f.getNewDepartureTime());
+                        if (departure.getTime() - timeNext.getTime() <= 0){
+                            String position = computeNewPosition(f, timeNext);
+                            String[] positions = position.split(",");
+                            double lat = Double.parseDouble(positions[1]);
+                            double lng = Double.parseDouble(positions[0]);
+                            f.setLat(lat);
+                            f.setLng(lng);
+                            Date arrival = format1.parse(f.getNewArrivalTime());
+                            int diff = (int) ((arrival.getTime() - timeNext.getTime())/(1000*60));
+                            String rest = Integer.toString(diff);
+                            f.setFlightStatus("flying, arrive in " + rest + " minutes");
+                        }
+                    }
+                    else if (f.getFlightStatus().substring(0, 6).equals("flying")){
                         if (f.getNewArrivalTime().equals("")){
                             Date arrival = format1.parse(f.getArrivalTime());
                             if (arrival.getTime() - timeNext.getTime() <= 0){
@@ -1080,7 +1089,9 @@ public class AdminController {
                                 double lng = Double.parseDouble(positions[0]);
                                 f.setLat(lat);
                                 f.setLng(lng);
-//                                System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                                int diff = (int) ((arrival.getTime() - timeNext.getTime())/(1000*60));
+                                String rest = Integer.toString(diff);
+                                f.setFlightStatus("flying, arrive in " + rest + " minutes");
                             }
                         } else {
                             Date arrival = format1.parse(f.getNewArrivalTime());
@@ -1098,25 +1109,14 @@ public class AdminController {
                                 double lng = Double.parseDouble(positions[0]);
                                 f.setLat(lat);
                                 f.setLng(lng);
-//                                System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
+                                int diff = (int) ((arrival.getTime() - timeNext.getTime())/(1000*60));
+                                String rest = Integer.toString(diff);
+                                f.setFlightStatus("flying, arrive in " + rest + " minutes");
                             }
                         }
                     }
-                    else if (f.getFlightStatus().equals("Arrived")){
-                        continue;
-                    }
                     else {
-                        Date departure = format1.parse(f.getNewDepartureTime());
-                        if (departure.getTime() - timeNext.getTime() <= 0){
-                            f.setFlightStatus("flying");
-                            String position = computeNewPosition(f, timeNext);
-                            String[] positions = position.split(",");
-                            double lat = Double.parseDouble(positions[1]);
-                            double lng = Double.parseDouble(positions[0]);
-                            f.setLat(lat);
-                            f.setLng(lng);
-//                            System.out.println(f.getFlightNumber() + ", " + lat + ", " + lng);
-                        }
+                        continue;
                     }
                         flightService.updateByPrimaryKeySelective(f);
                 }

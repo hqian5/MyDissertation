@@ -96,7 +96,8 @@
             <label id="departureAirport" class="label_input"></label><br>
             <label id="arrivalAirport" class="label_input"></label><br>
             <label id="flightStatus" class="label_input"></label><br>
-            <br><input type="button" value="Back" class="btn-blue" onclick="location.href='/user/home'">
+            <br><input type="button" value="refresh" class="btn-blue" onclick="retrack()">
+            <input type="button" value="Back" class="btn-blue" onclick="location.href='/user/home'">
         </div>
     </div>
 </div>
@@ -204,6 +205,10 @@
 
     function showTickets() {
         document.getElementById("buyConfirm").style.display = "none";
+    }
+
+    function retrack() {
+        location.reload();
     }
 </script>
 </html>
