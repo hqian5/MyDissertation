@@ -1036,7 +1036,6 @@ public class AdminController {
             return "manage";
         }
         else {
-
             if (check.size() != 0){
                 for (Flight f : check){
                     if (f.getFlightStatus().equals("On time")){
