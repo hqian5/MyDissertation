@@ -213,6 +213,13 @@
                         >
                             Generate
                         </button>
+
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button" onclick="hideForm()"
+                        >
+                            Cancel
+                        </button>
                     </div>
                 </form>
             </div>
