@@ -7,110 +7,237 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Admin homepage</title>
-    <link rel='stylesheet' href='../../css/login.css' />
-    <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <link rel="stylesheet" href="../../bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="../../bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>Admin Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<style>
-    body{
-        background-image: url("../../images/background5.jpg");
-        background-size: 100%;
-        background-repeat: repeat;
-        font-family: Verdana, Genevs, Arial, sans-serif;
-        text-align: center;
-    }
-</style>
+
 <body>
-<div class="container">
-    <div id="login_frame">
-        <h2>Flights Generator</h2>
-        <div class="row">
-            <div class="col-md">
-                <form id="flightInput" action="/input/flight" method="post" >
-                    <label class="label_input">Flight number</label>
-                    <br><input type="text" required id="flight_number" name="flight_number" class="text_field"><br>
-                    <br><label class="label_input">Departure time</label>
-                    <br><input type="datetime-local" required id="departure_time" name="departure_time" class="text_field"><br>
-                    <label id="timeRemind1" style="color: blue">Departure time, arrival time should be later than current time</label><br>
-                    <label class="label_input">Arrival time</label>
-                    <br><input type="datetime-local" required id="arrival_time" name="arrival_time" class="text_field"><br>
-                    <label id="timeRemind2" style="color: blue">Arrival time should be later than departure time</label><br>
+<header id="masthead" class="site-header site-header--layout-1 site-header--fluid site-header--absolute">
+    <div class="d-lg-flex justify-content-lg-between align-items-lg-center site-header__container">
+        <div class="d-lg-flex align-items-lg-center">
+            <div class="site-header__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div><!-- .site-header__logo -->
+        </div>
 
-                    <label class="label_input">Departure airport</label>
-                    <br><select required id="departure_airport" name="departure_airport" class="text_field">
-                    <option value="London">London</option>
-                    <option value="Paris">Paris</option>
-                    <option value="Berlin">Berlin</option>
-                    <option value="Amsterdam">Amsterdam</option>
-                    <option value="Helsinki">Helsinki</option>
-                    <option value="Frankfurt">Frankfurt</option>
-                    <option value="Istanbul">Istanbul</option>
-                    <option value="Munich">Munich</option>
-                    <option value="Rome">Rome</option>
-                    <option value="Moscow">Moscow</option>
-                    </select><br>
-                    <br><label class="label_input">Arrival airport</label>
-                    <br><select required id="arrival_airport" name="arrival_airport" class="text_field">
-                    <option value="London">London</option>
-                    <option value="Paris">Paris</option>
-                    <option value="Berlin">Berlin</option>
-                    <option value="Amsterdam">Amsterdam</option>
-                    <option value="Helsinki">Helsinki</option>
-                    <option value="Frankfurt">Frankfurt</option>
-                    <option value="Istanbul">Istanbul</option>
-                    <option value="Munich">Munich</option>
-                    <option value="Rome">Rome</option>
-                    <option value="Moscow">Moscow</option>
-                    </select><br>
+        <div class="d-lg-flex align-items-lg-center">
+            <ul class="min-list main-navigation">
+                <li>
+                    <a href="javascript:void(0)" onclick="hideForm()">Input flights</a>
+                </li>
 
-                    <label id="airportRemind" style="color: blue">Departure airport and arrival airport should be different</label><br>
-                    <label class="label_input">Seat number</label>
-                    <br><input type="number" required id="seat_number" name="seat_number" class="text_field"><br>
-                    <br><label class="label_input">Seat available</label>
-                    <br><input type="number" required id="seat_free" name="seat_free" class="text_field"><br>
-                    <label id="seatRemind" style="color: blue">Available seats should not be more than seats on the flight</label><br>
-                    <label class="label_input">Price</label>
-                    <br><input type="number" required id="price" name="price" class="text_field"><br>
-                    <label id="priceRemind" style="color: blue">The number of seats, available seats or price should be more than 0</label><br>
-                    <label class="label_input">Flight status</label><br>
-                    <select id="flight_status" name="flight_status" class="text_field" required>
-                        <option>On time</option>
-                        <option>Delayed</option>
-                        <option>Cancelled</option>
-                    </select><br>
+                <li>
+                    <a href="javascript:void(0)" onclick="showForm()">Generate flights</a>
+                </li>
 
-                    <br><input type="submit" value="Input flight" class="btn-blue">
-                    <input type="button" value="Manage flights" onclick="location.href='/manage/flights'" class="btn-blue"><br>
+                <li>
+                    <a href="/manage/flights">Manage flights</a>
+                </li>
 
-                    <br><input type="button" value="Generate flights" onclick="showForm()" class="btn-blue">
-                    <input type="button" value="Log out" onclick="location.href='/admin/logout'" class="btn-blue">
-                </form>
+                <li>
+                    <a href="/admin/logout">Log out</a>
+                </li>
+            </ul><!-- .main-navigation -->
+        </div>
 
-                <form id="generateFlights" action="/generate/flights" method="post" style="display: none">
-                    <label class="label_input">Choose the date</label><br>
-                    <input type="date" id="generateDate" name="generateDate" class="text_field" required><br>
-                    <label style="color: blue">The date should not be a past one</label><br>
+        <div class="d-lg-none nav-mobile">
+            <a href="#" class="nav-toggle js-nav-toggle nav-toggle--dove-gray">
+                <span></span>
+            </a><!-- .nav-toggle -->
+        </div><!-- .nav-mobile -->
+    </div><!-- .site-header__container -->
+</header><!-- #masthead -->
 
-                    <label class="label_input">Type in the number of flights</label><br>
-                    <input type="number" id="generateNumber" name="generateNumber" class="text_field" required><br>
-                    <label style="color: blue">The number should be more than 0</label><br>
+<section class="page-banner page-banner--layout-1 parallax" style="background-image: url('/images/background4.jpg')">
+    <div id="input" class="container">
+        <div class="page-banner__container animated zoomIn">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Input Flights</h2>
+            </div><!-- .page-banner__textcontent -->
 
-                    <br><input type="submit" value="Generate" class="btn-blue">
-                    <input type="button" value="Back" onclick="hideForm()" class="btn-blue">
+            <div id="inputFlights" class="main-search-container">
+                <form id="flightInput" action="/input/flight" method="post" class="main-search main-search--layout-2 bg-mirage">
+                    <div class="main-search__group">
+                        <label for="flight_number" class="c-white">Flight number *</label>
+                        <input
+                                type="text"
+                                required id="flight_number" name="flight_number"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="departure_time" class="c-white">Departure time *</label>
+                        <input
+                                type="datetime-local" required id="departure_time" name="departure_time"
+                                class="form-input"
+                                placeholder="Departure time and arrival time should be later than current time..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="arrival_time" class="c-white">Arrival time *</label>
+                        <input
+                                type="datetime-local" required id="arrival_time" name="arrival_time"
+                                class="form-input"
+                                placeholder="Arrival time should be later than departure time..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="departure_airport" class="c-white">Departure airport *</label>
+                        <select
+                                required id="departure_airport" name="departure_airport"
+                                class="form-input"
+                        >
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Helsinki">Helsinki</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Istanbul">Istanbul</option>
+                            <option value="Munich">Munich</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Moscow">Moscow</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="arrival_airport" class="c-white">Arrival airport *</label>
+                        <select
+                                required id="arrival_airport" name="arrival_airport"
+                                class="form-input"
+                        >
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Helsinki">Helsinki</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Istanbul">Istanbul</option>
+                            <option value="Munich">Munich</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Moscow">Moscow</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="seat_number" class="c-white">Seat number *</label>
+                        <input
+                                type="number" required id="seat_number" name="seat_number"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="seat_free" class="c-white">Available seat number *</label>
+                        <input
+                                type="number" required id="seat_free" name="seat_free"
+                                class="form-input"
+                                placeholder="Available seats should not be more than seats on the flight..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="price" class="c-white">Price *</label>
+                        <input
+                                type="number" required id="price" name="price"
+                                class="form-input"
+                                placeholder="The number of seats, available seats or price should be more than 0..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="flight_status" class="c-white">Status *</label>
+                        <select
+                                required id="flight_status" name="flight_status"
+                                class="form-input"
+                        >
+                            <option>On time</option>
+                            <option>Delayed</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Input
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
-</body>
 
+    <div id="generate" class="container" style="display: none">
+        <div class="page-banner__container animated fadeInDown">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Generate Flights</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div class="main-search-container">
+                <form id="generateFlights" action="/generate/flights" method="post" class="main-search main-search--layout-2 bg-mirage">
+                    <div class="main-search__group">
+                        <label for="generateDate" class="c-white">Choose the date to generate *</label>
+                        <input
+                                type="date" required id="generateDate" name="generateDate"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="generateNumber" class="c-white">Choose the number to generate *</label>
+                        <input
+                                type="number" required id="generateNumber" name="generateNumber"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Generate
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="colophone" class="site-footer">
+    <div class="t-center site-footer__primary">
+        <div class="container">
+            <div class="site-footer__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div>
+            <p class="t-small">BirdsTracker is your flights manager</p>
+        </div>
+    </div>
+    <!-- .site-footer__primary -->
+</footer><!-- #colophone -->
+
+<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
+<script src="/js/app.js"></script>
+</body>
 <script>
 
     if ('${status}' != ''){
@@ -135,13 +262,13 @@
     }
 
     function showForm() {
-        document.getElementById("flightInput").style.display = "none";
-        document.getElementById("generateFlights").style.display = "";
+        document.getElementById("input").style.display = "none";
+        document.getElementById("generate").style.display = "";
     }
 
     function hideForm() {
-        document.getElementById("flightInput").style.display = "";
-        document.getElementById("generateFlights").style.display = "none";
+        document.getElementById("input").style.display = "";
+        document.getElementById("generate").style.display = "none";
     }
 
 </script>

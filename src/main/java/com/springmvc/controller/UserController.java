@@ -159,12 +159,12 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/search/flight", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/search", method = RequestMethod.GET)
     public String searchFlight(){
         return "userhome";
     }
 
-    @RequestMapping(value = "/search/flight", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/search", method = RequestMethod.POST)
     public String getFlight(@RequestParam("flight_no") String flight_no, Model model, HttpSession session) {
         ArrayList<Flight> flight;
         flight = flightService.selectFlight(flight_no);
@@ -180,6 +180,31 @@ public class UserController {
             model.addAttribute("user", client);
         }
         return "userhome";
+    }
+
+    @RequestMapping(value = "/search/flight", method = RequestMethod.GET)
+    public ModelAndView userSearch(){
+        ModelAndView modelAndView = new ModelAndView("../../index");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/search/flight", method = RequestMethod.POST)
+    public ModelAndView userSearchValidate(@RequestParam("flight_no") String flight_no, HttpSession session) {
+        ArrayList<Flight> flight;
+        flight = flightService.selectFlight(flight_no);
+        Client client = (Client) session.getAttribute("userhome");
+        ModelAndView modelAndView = new ModelAndView("../../index");
+        if (flight.size() == 0){
+            modelAndView.addObject("status", 1);
+            modelAndView.addObject("user", client);
+        }
+        else {
+            session.setAttribute("flight", flight.get(0));
+            modelAndView.addObject("status", 0);
+            modelAndView.addObject("searchResult", flight.get(0));
+            modelAndView.addObject("user", client);
+        }
+        return modelAndView;
     }
 
 //    @RequestMapping(value = "/back/userhome", method = RequestMethod.GET)

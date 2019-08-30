@@ -7,188 +7,486 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Manage page</title>
-    <link rel='stylesheet' href='../../css/login.css' />
-    <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <link rel="stylesheet" href="../../bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="../../bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>Manage Flights</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <style>
     body{
-        background-image: url("../../images/background1.jpg");
+        background-image: url("/images/background6.jpg");
         background-size: 100%;
         background-repeat: repeat;
-        font-family: Verdana, Genevs, Arial, sans-serif;
-        text-align: center;
     }
 </style>
+
 <body>
-<div class="container">
-    <div class="manage_frame">
-        <h2>Please manage all flights</h2><br>
-        <input type="button" value="Admin Home" onclick="location.href='/back/adminhome'" class="btn-blue"><br><br>
-        <input type="button" value="Flights Simulation" onclick="showSimulation()" class="btn-blue">
-        <br><br>
+<header id="masthead" class="site-header site-header--layout-1 site-header--fluid site-header--absolute">
+    <div class="d-lg-flex justify-content-lg-between align-items-lg-center site-header__container">
+        <div class="d-lg-flex align-items-lg-center">
+            <div class="site-header__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div><!-- .site-header__logo -->
+        </div>
+
+        <div class="d-lg-flex align-items-lg-center">
+            <ul class="min-list main-navigation">
+                <li>
+                    <a href="javascript:void(0)" onclick="showAll5()">Manage flights</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" onclick="showSimulation()">Flights simulation</a>
+                </li>
+
+                <li>
+                    <a href="/back/adminhome">Input flights</a>
+                </li>
+
+                <li>
+                    <a href="/admin/logout">Log out</a>
+                </li>
+            </ul><!-- .main-navigation -->
+        </div>
+
+        <div class="d-lg-none nav-mobile">
+            <a href="#" class="nav-toggle js-nav-toggle nav-toggle--dove-gray">
+                <span></span>
+            </a><!-- .nav-toggle -->
+        </div><!-- .nav-mobile -->
+    </div><!-- .site-header__container -->
+</header><!-- #masthead -->
+
+<section class="page-banner page-banner--layout-1 parallax">
+    <c:if test="${empty flights}">
+        <div class="container" onplay="noData()">
+            <div class="page-banner__container animated fadeInLeft">
+                <div class="page-banner__textcontent t-center">
+                    <h2 class="page-banner__title c-primary">There is no data</h2>
+                </div><!-- .page-banner__textcontent -->
+            </div>
+        </div>
+    </c:if>
+
+    <div id="allFlights" class="container">
+        <div class="page-banner__container animated fadeInLeft">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Manage Flights</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div id="manageFlights" class="main-search-container">
+                <table class="listing-table">
+                    <thead>
+                    <tr class="listing-row c-white bg-primary">
+                        <th scope="col" class="c-white">ID</th>
+                        <th scope="col" class="c-white">Flight number</th>
+                        <th scope="col" class="c-white">Departure time</th>
+                        <th scope="col" class="c-white">Arrival time</th>
+                        <th scope="col" class="c-white">Departure airport</th>
+                        <th scope="col" class="c-white">Arrival airport</th>
+                        <th scope="col" class="c-white">Seat number</th>
+                        <th scope="col" class="c-white">Available seat number</th>
+                        <th scope="col" class="c-white">Price</th>
+                        <th scope="col" class="c-white">Status</th>
+                        <th scope="col" class="c-white">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach varStatus="s" items="${flights}" var="item">
+                    <tr class="main-search main-search--layout-2 bg-mirage">
+                        <td class="c-white" align="center">${item.flightid}</td>
+                        <td class="c-white">${item.flightNumber}</td>
+                        <td class="c-white">${item.departureTime}</td>
+                        <td class="c-white">${item.arrivalTime}</td>
+                        <td class="c-white">${item.departureAirport}</td>
+                        <td class="c-white">${item.arrivalAirport}</td>
+                        <td class="c-white">${item.seatNumber}</td>
+                        <td class="c-white">${item.seatFree}</td>
+                        <td class="c-white" align="center">${item.price}</td>
+                        <td class="c-white" align="center">${item.flightStatus}</td>
+                        <td>
+                            <div class="main-search__group">
+                                <input type="button" value="update" onclick="showId2();
+                                        document.getElementById('flightId_up').value = '${item.flightid}'"
+                                       class="button button--medium button--square button--primary">
+                            </div>
+                            <div class="main-search__group">
+                                <input type="button" value="delete" onclick="showId();
+                                        document.getElementById('flightId').value = '${item.flightid}'"
+                                       class="button button--medium button--square button--primary">
+                            </div>
+                            <div class="main-search__group">
+                                <input type="button" value="multi-delete"
+                                       onclick="document.getElementById('middle').value = '${item.flightid}';showId3()"
+                                       class="button button--medium button--square button--primary">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
-<c:if test="${empty flights}">
-<div class="container">
-    <div id="index_frame">
-        <label class="label_input">There is no data</label>
+
+    <div id="deleteId" class="container"  style="display: none">
+        <div class="page-banner__container animated fadeInRight">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Deletion Confirm</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div id="deleteFlight" class="main-search-container">
+                <form action="/delete/flight" method="post" class="main-search main-search--layout-1 bg-mirage">
+                    <div class="main-search__group main-search__group--primary">
+                        <label for="flightId" class="c-white">Confirm deletion id</label>
+                        <input
+                                type="text"
+                                required readonly id="flightId" name="flightId" style="width: 100px"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button"
+                                onclick="showAll1()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-</c:if>
 
-<div class="container">
-    <div id="login_frame">
-        <form id="deleteId" action="/delete/flight" method="post" style="display: none">
-            Confirm id: <input type="text" required id="flightId" name="flightId" style="width: 45px" class="text_field" readonly><br>
-            <br><input type="submit" value="Confirm delete" class="btn-blue">
-            <input type="button" value="Cancel" onclick="showAll1()" class="btn-blue">
-        </form>
+    <div id="updateId" class="container"  style="display: none">
+        <div class="page-banner__container animated fadeInRight">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Update Confirm</h2>
+            </div><!-- .page-banner__textcontent -->
 
-        <form id="updateId" action="/update/confirm" method="post" style="display: none">
-            Update id: <input type="text" required id="flightId_up" name="flightId_up" style="width: 45px" class="text_field" readonly><br>
-            <br><input type="submit" value="Begin update" class="btn-blue">
-            <input type="button" value="Cancel" onclick="showAll2()" class="btn-blue">
-        </form>
+            <div id="updateFlight" class="main-search-container">
+                <form action="/update/confirm" method="post" class="main-search main-search--layout-1 bg-mirage">
+                    <div class="main-search__group main-search__group--primary">
+                        <label for="flightId_up" class="c-white">Confirm update id</label>
+                        <input
+                                type="text"
+                                required readonly id="flightId_up" name="flightId_up" style="width: 100px"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
 
-        <form id="multipleDelete" action="/multiple/delete" method="post" style="display: none">
-            <input type="text" required id="middle" name="middle" style="width: 45px; display: none" class="text_field">
-            Delete flights from id:
-            <input type="text" required id="multipleId1" name="multipleId1" style="width: 45px" class="text_field" readonly>
-            to id:
-            <input type="text" required id="multipleId2" name="multipleId2" style="width: 45px" class="text_field" readonly><br>
-            <br><input type="submit" value="Confirm delete" class="btn-blue">
-            <input type="button" value="Cancel" onclick="showAll3()" class="btn-blue">
-        </form>
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Begin update
+                        </button>
+                    </div>
 
-        <form id="selectSimulationAirport" action="/select/airport" method="post" style="display: none">
-            <label class="label_input">Please select simulation airport</label><br><br>
-            <select id="select_departure" name="select_departure" class="text_field" required>
-                <option value="London">London</option>
-                <option value="Paris">Paris</option>
-                <option value="Berlin">Berlin</option>
-                <option value="Amsterdam">Amsterdam</option>
-                <option value="Helsinki">Helsinki</option>
-                <option value="Frankfurt">Frankfurt</option>
-                <option value="Istanbul">Istanbul</option>
-                <option value="Munich">Munich</option>
-                <option value="Rome">Rome</option>
-                <option value="Moscow">Moscow</option>
-            </select><br>
-            <br><input type="submit" class="btn-blue">
-            <input type="button" value="Cancel" onclick="showAll4()" class="btn-blue">
-        </form><br>
-
-        <table class="table" id="allFlights" align="center" valign="center">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Flight number</th>
-                <th scope="col">Departure time</th>
-                <th scope="col">Arrival time</th>
-                <th scope="col">Departure airport</th>
-                <th scope="col">Arrival airport</th>
-                <th scope="col">Seat number</th>
-                <th scope="col">Available seat number</th>
-                <th scope="col">Price</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach varStatus="s" items="${flights}" var="item">
-            <tr>
-                <td align="center" valign="center">${item.flightid}</td>
-                <td align="center" valign="center">${item.flightNumber}</td>
-                <td align="center" valign="center">${item.departureTime}</td>
-                <td align="center" valign="center">${item.arrivalTime}</td>
-                <td align="center" valign="center">${item.departureAirport}</td>
-                <td align="center" valign="center">${item.arrivalAirport}</td>
-                <td align="center" valign="center">${item.seatNumber}</td>
-                <td align="center" valign="center">${item.seatFree}</td>
-                <td align="center" valign="center">${item.price}</td>
-                <td align="center" valign="center">${item.flightStatus}</td>
-                <td align="center" valign="center">
-                    <input type="button" value="update" onclick="showId2();
-                    document.getElementById('flightId_up').value = '${item.flightid}'" class="btn-blue"><br><br>
-                    <input type="button" value="delete" onclick="showId();
-                    document.getElementById('flightId').value = '${item.flightid}'" class="btn-blue"><br><br>
-                    <input type="button" value="multi-delete" class="btn-blue"
-                    onclick="document.getElementById('middle').value = '${item.flightid}';showId3()"><br><br>
-                </td>
-            </tr>
-            </tbody>
-            </c:forEach>
-        </table>
-
-        <form id="updateWindow" action="/update/flight" method="post" style="display: none">
-            <label class="label_input">Flight Id</label>
-            <br><input type="text" required id="update_id" name="update_id" class="text_field" style="width: 45px;" readonly><br>
-            <br><label class="label_input">Flight number</label>
-            <br><input type="text" required id="flight_number" name="flight_number" class="text_field" readonly><br>
-            <br><label class="label_input">Departure time</label>
-            <br><input type="datetime-local" required id="departure_time" name="departure_time" class="text_field"><br>
-            <label id="timeRemind1" style="color: blue;">Departure time, arrival time should be later than current time</label><br>
-            <label class="label_input">Arrival time</label>
-            <br><input type="datetime-local" required id="arrival_time" name="arrival_time" class="text_field"><br>
-            <label id="timeRemind2" style="color: blue;">Arrival time should be later than departure time</label><br>
-
-            <label class="label_input">Departure airport</label>
-            <br><select required id="departure_airport" name="departure_airport" class="text_field">
-            <option value="London">London</option>
-            <option value="Paris">Paris</option>
-            <option value="Berlin">Berlin</option>
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Helsinki">Helsinki</option>
-            <option value="Frankfurt">Frankfurt</option>
-            <option value="Istanbul">Istanbul</option>
-            <option value="Munich">Munich</option>
-            <option value="Rome">Rome</option>
-            <option value="Moscow">Moscow</option>
-            </select><br>
-            <br><label class="label_input">Arrival airport</label>
-            <br><select required id="arrival_airport" name="arrival_airport" class="text_field">
-            <option value="London">London</option>
-            <option value="Paris">Paris</option>
-            <option value="Berlin">Berlin</option>
-            <option value="Amsterdam">Amsterdam</option>
-            <option value="Helsinki">Helsinki</option>
-            <option value="Frankfurt">Frankfurt</option>
-            <option value="Istanbul">Istanbul</option>
-            <option value="Munich">Munich</option>
-            <option value="Rome">Rome</option>
-            <option value="Moscow">Moscow</option>
-            </select><br>
-
-            <label id="airportRemind" style="color: blue;">Departure airport and arrival airport should be different</label><br>
-            <label class="label_input">Seat number</label>
-            <br><input type="number" required id="seat_number" name="seat_number" class="text_field"><br>
-            <br><label class="label_input">Seat available</label>
-            <br><input type="number" required id="seat_free" name="seat_free" class="text_field"><br>
-            <label id="seatRemind" style="color: blue;">Available seats should not be more than seats on the flight</label><br>
-            <label class="label_input">Price</label>
-            <br><input type="number" required id="price_up" name="price_up" class="text_field"><br>
-            <label id="priceRemind" style="color: blue;">The number of seats, available seats or price should be more than 0</label><br>
-
-            <label class="label_input">Flight status</label><br>
-            <select id="flightStatus" name="flightStatus" class="text_field" required>
-                <option>On time</option>
-                <option>Delayed</option>
-                <option>Cancelled</option>
-            </select><br>
-
-            <br><input type="submit" value="Confirm update" class="btn-blue">
-            <input type="button" value="Cancel" onclick="showAll()" class="btn-blue">
-        </form>
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button"
+                                onclick="showAll2()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div id="updateWindow" class="container" style="display: none">
+        <div class="page-banner__container animated fadeInLeft">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Update A Flight</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div id="inputFlights" class="main-search-container">
+                <form id="flightUpdate" action="/update/flight" method="post" class="main-search main-search--layout-2 bg-mirage">
+                    <div class="main-search__group">
+                        <label for="update_id" class="c-white">Flight id *</label>
+                        <input
+                                type="text"
+                                required readonly id="update_id" name="update_id"
+                                class="form-input" style="width: 100px;"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="flight_number" class="c-white">Flight number *</label>
+                        <input
+                                type="text"
+                                required readonly id="flight_number" name="flight_number"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="departure_time" class="c-white">Departure time *</label>
+                        <input
+                                type="datetime-local" required id="departure_time" name="departure_time"
+                                class="form-input"
+                                placeholder="Departure time and arrival time should be later than current time..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="arrival_time" class="c-white">Arrival time *</label>
+                        <input
+                                type="datetime-local" required id="arrival_time" name="arrival_time"
+                                class="form-input"
+                                placeholder="Arrival time should be later than departure time..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="departure_airport" class="c-white">Departure airport *</label>
+                        <select
+                                required id="departure_airport" name="departure_airport"
+                                class="form-input"
+                        >
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Helsinki">Helsinki</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Istanbul">Istanbul</option>
+                            <option value="Munich">Munich</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Moscow">Moscow</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="arrival_airport" class="c-white">Arrival airport *</label>
+                        <select
+                                required id="arrival_airport" name="arrival_airport"
+                                class="form-input"
+                        >
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Helsinki">Helsinki</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Istanbul">Istanbul</option>
+                            <option value="Munich">Munich</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Moscow">Moscow</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="seat_number" class="c-white">Seat number *</label>
+                        <input
+                                type="number" required id="seat_number" name="seat_number"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="seat_free" class="c-white">Available seat number *</label>
+                        <input
+                                type="number" required id="seat_free" name="seat_free"
+                                class="form-input"
+                                placeholder="Available seats should not be more than seats on the flight..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="price_up" class="c-white">Price *</label>
+                        <input
+                                type="number" required id="price_up" name="price_up"
+                                class="form-input"
+                                placeholder="The number of seats, available seats or price should be more than 0..."
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <label for="flightStatus" class="c-white">Status *</label>
+                        <select
+                                required id="flightStatus" name="flightStatus"
+                                class="form-input"
+                        >
+                            <option>On time</option>
+                            <option>Delayed</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Confirm update
+                        </button>
+                    </div>
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button"
+                                onclick="showAll()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="multipleDelete" class="container"  style="display: none">
+        <div class="page-banner__container animated fadeInRight">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Multi-deletion Confirm</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div id="multiDeleteFlight" class="main-search-container">
+                <form action="/multiple/delete" method="post" class="main-search main-search--layout-1 bg-mirage">
+                    <div class="main-search__group main-search__group--primary" style="display: none">
+                        <input
+                                type="text"
+                                required readonly id="middle" name="middle" style="width: 100px"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group main-search__group--primary">
+                        <label for="multipleId1" class="c-white">Delete data from:</label>
+                        <input
+                                type="text"
+                                required readonly id="multipleId1" name="multipleId1" style="width: 100px"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group main-search__group--primary">
+                        <label for="multipleId2" class="c-white">to:</label>
+                        <input
+                                type="text"
+                                required readonly id="multipleId2" name="multipleId2" style="width: 100px"
+                                class="form-input"
+                        >
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button"
+                                onclick="showAll3()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="selectSimulationAirport" class="container"  style="display: none">
+        <div class="page-banner__container animated fadeInRight">
+            <div class="page-banner__textcontent t-center">
+                <h2 class="page-banner__title c-primary">Select Simulation Airport</h2>
+            </div><!-- .page-banner__textcontent -->
+
+            <div id="simulateFlight" class="main-search-container">
+                <form action="/select/airport" method="post" class="main-search main-search--layout-1 bg-mirage">
+                    <div class="main-search__group main-search__group--primary">
+                        <label for="flightId" class="c-white">Select an airport</label>
+                        <select
+                                type="text"
+                                required id="select_departure" name="select_departure"
+                                class="form-input"
+                        >
+                            <option value="London">London</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Helsinki">Helsinki</option>
+                            <option value="Frankfurt">Frankfurt</option>
+                            <option value="Istanbul">Istanbul</option>
+                            <option value="Munich">Munich</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Moscow">Moscow</option>
+                        </select>
+                    </div><!-- .form-group -->
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="submit"
+                        >
+                            Confirm
+                        </button>
+                    </div>
+
+                    <div class="main-search__group main-search__group--tertiary">
+                        <button
+                                class="button button--medium button--square button--primary"
+                                type="button"
+                                onclick="showAll4()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="colophone" class="site-footer">
+    <div class="t-center site-footer__primary">
+        <div class="container">
+            <div class="site-footer__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div>
+            <p class="t-small">BirdsTracker is your flights manager</p>
+        </div>
+    </div>
+    <!-- .site-footer__primary -->
+</footer><!-- #colophone -->
+
+<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
+<script src="/js/app.js"></script>
 </body>
 
 <script>
@@ -294,9 +592,17 @@
         document.getElementById("selectSimulationAirport").style.display = "none";
     }
 
+    function showAll5() {
+        document.getElementById("allFlights").style.display = "";
+    }
+
     function showSimulation() {
         document.getElementById("allFlights").style.display = "none";
         document.getElementById("selectSimulationAirport").style.display = "";
+    }
+
+    function noData() {
+        document.getElementById("allFlights").style.display = "none";
     }
 </script>
 </html>

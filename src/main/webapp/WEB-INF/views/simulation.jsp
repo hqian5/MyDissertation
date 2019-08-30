@@ -7,81 +7,160 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>Simulation</title>
-    <link rel='stylesheet' href='../../css/login.css' />
-    <script src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <link rel="stylesheet" href="../../bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <script src="../../bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>Flights Simulation</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmLG_UuFMteDLB4pVVO7yR7CCAb6pTGjc"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <style>
     body{
-        background-image: url("../../images/background3.jpg");
+        background-image: url("../../images/background6.jpg");
         background-size: 100%;
         background-repeat: repeat;
         font-family: Verdana, Genevs, Arial, sans-serif;
         text-align: center;
     }
 </style>
+
 <body onload="initialize()">
-<div class="container">
-    <div id="login_frame">
+<header id="masthead" class="site-header site-header--fluid bg-primary">
+    <div class="d-lg-flex justify-content-lg-between align-items-lg-center site-header__container">
+        <div class="d-lg-flex align-items-lg-center">
+            <div class="site-header__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div><!-- .site-header__logo -->
+        </div>
 
-        <h2>Simulating flights</h2><br>
-        <input type="button" value="Flights Home" onclick="location.href='/manage/flights'" class="btn-blue">
-        <input type="button" value="Stop simulation" onclick="location.href='/stop/simulation'" class="btn-blue"><br><br>
-        <form id="simulating" name="simulating" action="/simulating/flights" method="post">
-            Simulating current time: <input type="datetime-local" id="simulationTime" name="simulationTime"
-                                            class="text_field" value="${time}" ><br><br>
-            Simulating airport: <input type="text" id="simulationAirport" name="simulationAirport"
-                                       value="${airport}" class="text_field" readonly><br><br>
-        </form>
+        <div class="d-lg-flex align-items-lg-center">
+            <ul class="min-list main-navigation main-navigation--white">
+                <li>
+                    <a href="/manage/flights">Manage flights</a>
+                </li>
 
-        <div id="map" style="width: auto; height: 400px" align="center"></div><br>
+                <li>
+                    <a href="/input/flight">Input flights</a>
+                </li>
 
-        <table class="table" id="nowFlights" align="center" valign="center">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Flight number</th>
-                <th scope="col">Departure time</th>
-                <th scope="col">Arrival time</th>
-                <th scope="col">Departure airport</th>
-                <th scope="col">Arrival airport</th>
-                <th scope="col">Seat number</th>
-                <th scope="col">Available seat number</th>
-                <th scope="col">Price</th>
-                <th scope="col">Status</th>
-                <th scope="col">New arrival time</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach varStatus="s" items="${simulationFlights}" var="item">
-                <tr>
-                    <td align="center" valign="center">${item.flightid}</td>
-                    <td align="center" valign="center">${item.flightNumber}</td>
-                    <td align="center" valign="center">${item.departureTime}</td>
-                    <td align="center" valign="center">${item.arrivalTime}</td>
-                    <td align="center" valign="center">${item.departureAirport}</td>
-                    <td align="center" valign="center">${item.arrivalAirport}</td>
-                    <td align="center" valign="center">${item.seatNumber}</td>
-                    <td align="center" valign="center">${item.seatFree}</td>
-                    <td align="center" valign="center">${item.price}</td>
-                    <td align="center" valign="center">${item.flightStatus}</td>
-                    <td align="center" valign="center">${item.newArrivalTime}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                <li>
+                    <a href="/admin/logout">Log out</a>
+                </li>
+            </ul><!-- .main-navigation -->
+        </div>
+
+        <div class="d-lg-none nav-mobile">
+            <a href="#" class="nav-toggle js-nav-toggle nav-toggle--dove-gray">
+                <span></span>
+            </a><!-- .nav-toggle -->
+        </div><!-- .nav-mobile -->
+    </div><!-- .site-header__container -->
+</header><!-- #masthead -->
+
+<div class="d-xl-flex">
+    <div class="order-xl-1 listing-column listing-column--xl-50 listing-column--map js-map-container">
+        <div id="map" class="map"></div>
+    </div>
+
+    <div class="order-xl-0 listing-column listing-column--xl-50 listing-column--content">
+        <div id="simulation" class="container">
+            <div class="page-banner__container animated fadeInUp">
+                <div class="page-banner__textcontent t-center">
+                    <h2 class="page-banner__title c-primary">Simulating Flights</h2>
+                </div><!-- .page-banner__textcontent -->
+
+                <div id="simulatingFlight" class="main-search-container">
+                    <form id="simulating" name="simulating" action="/simulating/flights" method="post"
+                          class="main-search main-search--layout-1 bg-mirage">
+                        <div class="main-search__group main-search__group--primary">
+                            <label for="simulationTime" class="c-white">Simulating current time</label>
+                            <input
+                                    type="datetime-local" id="simulationTime" name="simulationTime"
+                                    value="${time}"
+                                    class="form-input"
+                            >
+                        </div><!-- .form-group -->
+
+                        <div class="main-search__group main-search__group--primary">
+                            <label for="simulationAirport" class="c-white">Simulated airport</label>
+                            <input
+                                    type="text" id="simulationAirport" name="simulationAirport"
+                                    value="${airport}" readonly
+                                    class="form-input"
+                            >
+                        </div><!-- .form-group -->
+
+                        <div class="main-search__group main-search__group--tertiary">
+                            <button
+                                    class="button button--medium button--square button--primary"
+                                    type="button" onclick="location.href='/stop/simulation'"
+                            >
+                                Stop
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="Flights"  class="main-search-container">
+                    <table id="nowFlights" class="listing-table">
+                        <thead>
+                        <tr class="listing-row c-white bg-primary">
+                            <th scope="col" class="c-white">ID</th>
+                            <th scope="col" class="c-white">Flight number</th>
+                            <th scope="col" class="c-white">Departure time</th>
+                            <th scope="col" class="c-white">Arrival time</th>
+                            <th scope="col" class="c-white">Departure airport</th>
+                            <th scope="col" class="c-white">Arrival airport</th>
+                            <th scope="col" class="c-white">Status</th>
+                            <th scope="col" class="c-white">New arrival time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach varStatus="s" items="${simulationFlights}" var="item">
+                        <tr class="main-search main-search--layout-2 bg-mirage">
+                            <td class="c-white" align="center">${item.flightid}</td>
+                            <td class="c-white">${item.flightNumber}</td>
+                            <td class="c-white">${item.departureTime}</td>
+                            <td class="c-white">${item.arrivalTime}</td>
+                            <td class="c-white">${item.departureAirport}</td>
+                            <td class="c-white">${item.arrivalAirport}</td>
+                            <td class="c-white" align="center">${item.flightStatus}</td>
+                            <td class="c-white" align="center">${item.newArrivalTime}</td>
+                        </tr>
+                        </tbody>
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-</body>
 
+<footer id="colophone" class="site-footer">
+    <div class="t-center site-footer__primary">
+        <div class="container">
+            <div class="site-footer__logo">
+                <a href="/back/index">
+                    <h1 class="screen-reader-text">BirdsTracker</h1>
+                    <img src="/images/headerlogo.png" alt="BirdsTracker">
+                </a>
+            </div>
+            <p class="t-small">BirdsTracker is your flights manager</p>
+        </div>
+    </div>
+    <!-- .site-footer__primary -->
+</footer><!-- #colophone -->
+
+<script src="https://cdn.rawgit.com/googlemaps/v3-utility-library/master/infobox/src/infobox.js"></script>
+<script src="/js/app.js"></script>
+</body>
 <script>
     if ('${status}' != ''){
         if ('${status}' == 0) {
@@ -97,8 +176,8 @@
     function initialize() {
 
         var mapOptions = {
-            center: new google.maps.LatLng(52.5200, 13.4050),
-            zoom: 4,
+            center: new google.maps.LatLng(48.2082, 16.3738),
+            zoom: 4.5,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -164,7 +243,6 @@
                 }
             }(l));
         }
-
 
     }
 </script>
