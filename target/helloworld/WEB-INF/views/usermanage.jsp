@@ -40,7 +40,7 @@
         <div class="d-lg-flex align-items-lg-center">
             <ul class="min-list main-navigation">
                 <li>
-                    <a href="/user/home">User Home</a>
+                    <a href="/user/home">User home</a>
                 </li>
 
                 <li>

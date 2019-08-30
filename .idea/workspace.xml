@@ -7,17 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2c58e9f-63b8-4643-80d2-88e4e4a72a7c" name="Default Changelist" comment="front-end update1">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/maps/style.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/springmvc/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/springmvc/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/helloworld/WEB-INF/classes/com/springmvc/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/helloworld/WEB-INF/views/userhome.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/helloworld/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,7 +40,17 @@
     <favorites_list name="project" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -141,10 +143,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/simulation.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/springmvc/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp" />
       </list>
     </option>
@@ -204,8 +206,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,10 +213,47 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,7 +268,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.webpack" />
@@ -240,21 +277,21 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.springmvc.dao" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\js" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\css" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\images" />
+      <recent name="D:\study\Master\Dissertation\project\src\main\resources\spring" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\study\Master\Dissertation\project\src\main\webapp" />
       <recent name="D:\study\Master\Dissertation\project\src\main\webapp\WEB-INF\views" />
       <recent name="D:\study\Master\Dissertation\project\src\main\webapp\WEB-INF" />
       <recent name="D:\study\Master\Dissertation\project\src\main\webapp\images" />
       <recent name="D:\study\Master\Dissertation\project\src\main\java\com\springmvc\controller" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\js" />
-      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\css" />
-      <recent name="D:\study\Master\Dissertation\project\src\main\webapp\images" />
-      <recent name="D:\study\Master\Dissertation\project\src\main\resources\spring" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -270,7 +307,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.16">
-    <configuration name="FlightMapperTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FlightMapperTest.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="project" />
       <extension name="coverage">
         <pattern>
@@ -280,7 +317,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.springmvc.dao" />
       <option name="MAIN_CLASS_NAME" value="com.springmvc.dao.FlightMapperTest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="METHOD_NAME" value="insert" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -529,20 +566,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.FlightMapperTest.test" />
       <item itemvalue="JUnit.FlightMapperTest.testAngel" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.16" />
       <item itemvalue="Tomcat Server.simulation.jsp" />
       <item itemvalue="Tomcat Server.simulation.jsp (1)" />
       <item itemvalue="Tomcat Server.index.jsp" />
+      <item itemvalue="JUnit.FlightMapperTest.insert" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FlightMapperTest.insert" />
         <item itemvalue="Tomcat Server.index.jsp" />
         <item itemvalue="Tomcat Server.simulation.jsp (1)" />
         <item itemvalue="Tomcat Server.simulation.jsp" />
         <item itemvalue="JUnit.FlightMapperTest.testAngel" />
-        <item itemvalue="JUnit.FlightMapperTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -565,6 +602,7 @@
       <workItem from="1563881302470" duration="47062000" />
       <workItem from="1564056158335" duration="24415000" />
       <workItem from="1565464451229" duration="107935000" />
+      <workItem from="1567172701175" duration="4519000" />
     </task>
     <task id="LOCAL-00001" summary="user&amp;admin login&amp;register">
       <created>1562603068783</created>
@@ -682,15 +720,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FlightMapperTest_test - 2019.08.26 at 01h 20m 33s.xml">
-      <configuration name="FlightMapperTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FlightMapperTest_test - 2019.08.26 at 01h 20m 55s.xml">
-      <configuration name="FlightMapperTest.test" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="FlightMapperTest_test - 2019.08.26 at 01h 30m 54s.xml">
-      <configuration name="FlightMapperTest.test" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="FlightMapperTest_test - 2019.08.26 at 01h 31m 15s.xml">
       <configuration name="FlightMapperTest.test" configurationId="JUnit" />
     </history-entry>
@@ -712,9 +741,18 @@
     <history-entry file="FlightMapperTest_testAngel - 2019.08.26 at 22h 30m 38s.xml">
       <configuration name="FlightMapperTest.testAngel" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="FlightMapperTest_insert - 2019.08.30 at 17h 41m 57s.xml">
+      <configuration name="FlightMapperTest.insert" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_insert - 2019.08.30 at 17h 44m 30s.xml">
+      <configuration name="FlightMapperTest.insert" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FlightMapperTest_insert - 2019.08.30 at 17h 47m 01s.xml">
+      <configuration name="FlightMapperTest.insert" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="534890000" />
+    <option name="totallyTimeSpent" value="539794000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -727,6 +765,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -734,7 +773,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.20040214" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.20308311" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Dependency Viewer" order="0" weight="0.32894737" />
       <window_info anchor="bottom" id="Spring" order="1" />
@@ -1009,16 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/service/impl/FlightServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1070,13 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/images/background2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1109,20 +1131,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-869">
-          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/test.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/test.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -1130,16 +1139,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11869#11877#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="383" selection-start-line="383" selection-end-line="383" />
-          <folding>
-            <element signature="e#7350#7358#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1161,47 +1160,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
-          <folding>
-            <element signature="e#11506#11527#0#HTML" expanded="true" />
-            <element signature="e#12677#12698#0#HTML" expanded="true" />
-            <element signature="e#18237#18258#0#HTML" expanded="true" />
-            <element signature="e#19213#19234#0#HTML" expanded="true" />
-            <element signature="e#20384#20405#0#HTML" expanded="true" />
-            <element signature="e#17925#17949#0#HTML" expanded="true" />
-            <element signature="e#22137#22158#0#HTML" expanded="true" />
-            <element signature="e#22727#22748#0#HTML" expanded="true" />
-            <element signature="e#22933#22953#0#HTML" expanded="true" />
-            <element signature="e#23191#23212#0#HTML" expanded="true" />
-            <element signature="e#23391#23411#0#HTML" expanded="true" />
-            <element signature="e#23949#23969#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5389">
-          <caret line="317" column="7" lean-forward="true" selection-start-line="317" selection-start-column="7" selection-end-line="317" selection-end-column="7" />
-          <folding>
-            <element signature="e#14278#14299#0#HTML" expanded="true" />
-            <element signature="e#17982#18003#0#HTML" expanded="true" />
-            <element signature="e#18492#18513#0#HTML" expanded="true" />
-            <element signature="e#19600#19621#0#HTML" expanded="true" />
-            <element signature="e#21768#21789#0#HTML" expanded="true" />
-            <element signature="e#22322#22343#0#HTML" expanded="true" />
-            <element signature="e#22496#22516#0#HTML" expanded="true" />
-            <element signature="e#22828#22849#0#HTML" expanded="true" />
-            <element signature="e#22975#22995#0#HTML" expanded="true" />
-            <element signature="e#23440#23460#0#HTML" expanded="true" />
-            <element signature="e#24858#24879#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/simulation.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2941">
@@ -1209,42 +1167,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7123">
-          <caret line="419" lean-forward="true" selection-start-line="419" selection-end-line="419" />
-          <folding>
-            <element signature="e#17396#17417#0#HTML" expanded="true" />
-            <element signature="e#18183#18202#0#HTML" expanded="true" />
-            <element signature="e#19250#19271#0#HTML" expanded="true" />
-            <element signature="e#20037#20057#0#HTML" expanded="true" />
-            <element signature="e#21372#21393#0#HTML" expanded="true" />
-            <element signature="e#22193#22209#0#HTML" expanded="true" />
-            <element signature="e#30052#30073#0#HTML" expanded="true" />
-            <element signature="e#30606#30627#0#HTML" expanded="true" />
-            <element signature="e#30873#30893#0#HTML" expanded="true" />
-            <element signature="e#30839#30859#0#HTML" expanded="true" />
-            <element signature="e#31748#31768#0#HTML" expanded="true" />
-            <element signature="e#32797#32818#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/adminhome.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3774">
           <caret line="222" column="26" selection-start-line="222" selection-start-column="26" selection-end-line="222" selection-end-column="26" />
-          <folding>
-            <element signature="e#9245#9301#0#HTML" expanded="true" />
-            <element signature="e#15865#15886#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/userhome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="54" lean-forward="true" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+        <state relative-caret-position="5389">
+          <caret line="317" column="7" lean-forward="true" selection-start-line="317" selection-start-column="7" selection-end-line="317" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1255,6 +1188,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7123">
+          <caret line="419" lean-forward="true" selection-start-line="419" selection-end-line="419" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/register.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -1262,10 +1202,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="54" lean-forward="true" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="110" lean-forward="true" selection-start-line="47" selection-start-column="110" selection-end-line="47" selection-end-column="110" />
+        <state relative-caret-position="323">
+          <caret line="47" column="61" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/springmvc/dao/FlightMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/springmvc/dao/FlightMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7350#7358#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-928">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/usermanage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1280,7 +1262,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

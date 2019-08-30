@@ -45,7 +45,7 @@
         <div class="page-banner__container animated fadeInUp">
             <div class="page-banner__textcontent t-center">
                 <h2 class="page-banner__title c-primary">Birds tracker</h2>
-                <p class="page-banner__subtitle c-primary">Tack your flights by typing in a flight number~</p>
+                <p class="page-banner__subtitle c-primary">Track your flights by typing in a flight number~</p>
             </div><!-- .page-banner__textcontent -->
 
             <div id="tracker" class="main-search-container">
