@@ -19,7 +19,7 @@
 
 <style>
     body{
-        background-image: url("/images/background6.jpg");
+        background-image: url("../../images/background4.jpg");
         background-size: 100%;
         background-repeat: repeat;
     }

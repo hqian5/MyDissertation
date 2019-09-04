@@ -23,8 +23,6 @@
         background-image: url("../../images/background6.jpg");
         background-size: 100%;
         background-repeat: repeat;
-        font-family: Verdana, Genevs, Arial, sans-serif;
-        text-align: center;
     }
 </style>
 
@@ -171,7 +169,7 @@
         }
     }
 
-    setTimeout("simulating.submit();", 5000);
+    setTimeout("simulating.submit();", 10000);
 
     function initialize() {
 
